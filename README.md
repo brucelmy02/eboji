@@ -4,6 +4,16 @@
 
 **主要操作都在网页中完成。** Codex 提供 AI 能力，也可以协助启动网页；每位使用者使用自己的电脑、登录和记录。
 
+## 功能演示
+
+[![e薄肌演示：3D 动作示意、组数记录、反馈调整和训练足迹](docs/media/eboji-demo-preview.gif)](https://github.com/brucelmy02/eboji/raw/refs/heads/main/docs/media/eboji-demo.mp4)
+
+[打开完整演示视频（MP4，约 75 秒，中文字幕）](https://github.com/brucelmy02/eboji/raw/refs/heads/main/docs/media/eboji-demo.mp4)
+
+从“徒手基础全身”预设开始，查看 3D 动作、拖动卡组、记录组数，再提交感受、采用调整并回看训练足迹。上方为精选片段，完整视频无配音。
+
+录制操作来自真实网页，使用独立演示数据；**AI 反馈为固定样例，用于展示交互，不代表真实生成速度或个性化效果。** 预设与打卡不调用 AI，实际使用反馈分析会消耗自己的 Codex 额度。[录制说明](docs/media/README.md)
+
 ## 把 GitHub 链接交给 Codex 安装
 
 如果你已经在自己的电脑上使用 Codex，可以让它帮你完成下载、环境检查、连接检查和网页启动。目前这套指引以 macOS 为主。

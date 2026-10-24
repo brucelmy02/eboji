@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="export-token" content="{{TOKEN}}">
+<title>eboji · 3D 预览导出</title>
+<style>
+  * { box-sizing: border-box; } body { font: 15px/1.6 system-ui; color: #1d2c40; margin: 32px; background: #fff; }
+  button { padding: 12px 24px; border: 0; border-radius: 22px; color: #fff; background: #2875d5; cursor: pointer; } button:disabled { opacity: .5; }
+  #stage { width: 720px; height: 560px; max-width: none; border-radius: 20px; overflow: hidden; }
+  #gallery { display: grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap: 16px; margin-top: 28px; }
+  figure { margin: 0; background: #f6f9fd; border-radius: 16px; overflow: hidden; } img { width: 100%; height: auto; display: block; } figcaption { padding: 8px 12px; }
+  progress { width: 400px; max-width: 100%; } #error { color: #b42318; }
+</style>
+<h1>从 3D 场景导出动作预览</h1>
+<p>复用现有模型、灯光、相机与第二关键姿势。720 × 560，WebP。</p>
+<button id="generate" type="button">生成全部 80 张预览图</button>
+<p id="status" role="status">准备就绪</p><progress id="progress" value="0" max="80"></progress><p id="error" role="alert"></p>
+<div id="stage"></div><div id="gallery"></div>
+<script type="module" src="/export.js"></script>
+</html>

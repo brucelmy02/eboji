@@ -1,0 +1,194 @@
+/* A daily session has one active exercise. The surrounding deck keeps context. */
+#page-session { width: 100%; max-width: 1000px; padding-top: 24px; }
+#page-session .session-heading { margin: 12px 0 24px; }
+#page-session .session-heading .eyebrow { margin-bottom: 9px; }
+#page-session .session-heading h1 { font-size: clamp(30px, 3.5vw, 40px); letter-spacing: -1.2px; }
+#page-session .session-heading .page-description { margin-top: 10px; max-width: 680px; }
+#page-session .session-meta { margin-top: 13px; gap: 8px 20px; }
+#page-session .preparation { border-radius: 18px; background: #f5f6f8; }
+#page-session .preparation > summary { min-height: 66px; }
+#page-session .preparation-heading strong { font-size: 16px; }
+#page-session .preparation-heading small { font-size: 12px; margin-top: 1px; }
+#page-session .preparation .detail-body { padding: 0 0 18px; }
+#page-session .preparation .detail-list { padding-left: 18px; font-size: 14px; line-height: 1.9; }
+.deck-start.text-button { margin-top: 9px; padding-left: 0; color: var(--accent-ink); font-size: 13px; }
+
+.workout-deck { --deck-line: #e6ebf1; --deck-muted: #687588; margin: 32px 0 24px; min-width: 0; }
+.deck-overview { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 15px 20px; margin-bottom: 23px; }
+.deck-overview h2 { font-size: 24px; letter-spacing: -.6px; }
+.deck-overview > div > p { margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+.deck-total { align-self: end; padding-bottom: 2px; color: var(--accent-ink); font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.deck-progress { grid-column: 1 / -1; display: block; width: 100%; height: 4px; border: 0; border-radius: 99px; overflow: hidden; appearance: none; -webkit-appearance: none; background: #edf1f6; color: var(--accent); }
+.deck-progress::-webkit-progress-bar { background: #edf1f6; border-radius: 99px; }
+.deck-progress::-webkit-progress-value { background: var(--accent); border-radius: 99px; transition: width 260ms ease; }
+.deck-progress::-moz-progress-bar { background: var(--accent); border-radius: 99px; }
+.deck-workspace { min-width: 0; scroll-margin-top: 90px; }
+
+/* The small cards navigate; only the large card records a completed set. */
+.deck-rail { display: flex; align-items: stretch; gap: 10px; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scroll-padding: 5px; scrollbar-width: thin; scrollbar-color: #d6deea transparent; padding: 5px 5px 12px; margin: -5px -5px 12px; }
+.deck-choice { position: relative; flex: 1 0 148px; max-width: 240px; min-width: 0; display: grid; grid-template-columns: 25px minmax(0, 1fr); align-content: center; align-items: center; gap: 3px 10px; padding: 14px 17px; border: 1px solid transparent; border-radius: 16px; background: #f5f6f8; color: var(--ink); text-align: left; scroll-snap-align: start; transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease; }
+.deck-choice-index { grid-column: 1; grid-row: 1 / 3; display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: #738095; background: #e8ecf2; font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.deck-choice strong { grid-column: 2; min-width: 0; overflow-wrap: anywhere; font-size: 14px; font-weight: 500; line-height: 1.5; }
+.deck-choice small { grid-column: 2; color: var(--deck-muted); font-size: 11px; line-height: 1.7; font-variant-numeric: tabular-nums; }
+.deck-choice.is-complete .deck-choice-index { background: #dcecff; color: var(--accent-ink); }
+.deck-choice.is-complete small { color: var(--accent-ink); }
+.deck-choice.is-current, .deck-choice[aria-current="true"] { background: #eff6ff; border-color: #b9d8fb; box-shadow: 0 2px 6px rgb(0 93 190 / 3%); }
+.deck-choice.is-current .deck-choice-index { color: white; background: var(--accent); }
+.deck-choice.is-current strong { color: #005fbd; font-weight: 600; }
+
+/* Space below the face reveals two quieter cards without ornamental motion. */
+.deck-stage { position: relative; min-width: 0; margin-inline: -10px; padding: 9px 10px 32px; overflow: hidden; touch-action: pan-y; border-radius: 30px; }
+.deck-stage:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.deck-stack { position: relative; isolation: isolate; min-width: 0; }
+.deck-stack::before, .deck-stack::after { content: ""; position: absolute; z-index: -1; pointer-events: none; inset: 20px 0 0; border: 1px solid #e3e9f2; border-radius: 28px; background: #eef3f9; }
+.deck-stack::before { transform: translateY(20px) scaleX(.94); }
+.deck-stack::after { transform: translateY(10px) scaleX(.97); background: #f7f9fc; }
+.deck-card { position: relative; min-width: 0; border: 1px solid var(--deck-line); border-radius: 28px; padding: 25px 30px 22px; background: white; box-shadow: 0 9px 26px -13px rgb(33 57 85 / 12%); transform-origin: 50% 90%; transition: transform 280ms cubic-bezier(.22, 1, .36, 1), box-shadow 200ms ease; touch-action: pan-y; }
+.deck-card.is-dragging, .deck-stage.is-dragging .deck-card { transition: none; cursor: grabbing; user-select: none; -webkit-user-select: none; box-shadow: 0 15px 38px -15px rgb(33 57 85 / 18%); }
+.deck-card.is-complete { border-color: #c5dcf7; }
+.deck-card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: grab; }
+.deck-eyebrow { font-size: 12px; color: var(--deck-muted); letter-spacing: .5px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.deck-nav { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+.deck-nav .icon-button { width: 40px; height: 40px; font-size: 20px; background: #f2f5f9; color: #4d617b; }
+.deck-nav .icon-button:disabled { opacity: .32; }
+.deck-card-main { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); align-items: center; gap: 40px; padding: 21px 0 27px; }
+.deck-visual { min-width: 0; text-align: center; }
+.deck-poster { display: grid; place-items: center; min-width: 0; aspect-ratio: 720 / 560; border-radius: 22px; background: #f6f9fd; overflow: hidden; }
+.deck-poster > .exercise-poster-image { width: 100%; height: auto; }
+.deck-poster > p { max-width: 240px; color: var(--deck-muted); font-size: 14px; line-height: 1.8; }
+.deck-poster-fallback { color: #8393a8; font-size: 24px; font-weight: 500; letter-spacing: -.5px; line-height: 1.6; }
+.deck-demo-toggle.text-button { color: var(--accent-ink); margin-top: 9px; font-size: 13px; padding-inline: 12px; }
+.deck-demo { text-align: left; margin-top: 12px; }
+.deck-copy { min-width: 0; }
+.deck-category { color: var(--deck-muted); font-size: 12px; line-height: 1.7; margin-bottom: 9px; }
+.deck-copy h3 { font-size: clamp(30px, 3.2vw, 36px); letter-spacing: -1px; line-height: 1.25; text-wrap: balance; }
+.deck-prescription { display: flex; align-items: baseline; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
+.deck-prescription strong { color: #1d2c40; font-size: clamp(24px, 2.6vw, 30px); font-weight: 500; letter-spacing: -.7px; line-height: 1.3; }
+.deck-prescription > span { color: var(--deck-muted); font-size: 13px; }
+.deck-set-track { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 18px 0 0; padding: 0; }
+.deck-set-track > li { display: grid; place-items: center; min-width: 38px; height: 32px; padding: 0 10px; border: 1px solid #e3e8f0; border-radius: 9px; color: #7c899b; background: #f6f8fb; font-size: 12px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+.deck-set-track > li.is-next { color: var(--accent-ink); background: #f0f7ff; border-color: #91c2f6; }
+.deck-set-track > li.is-done { color: white; border-color: var(--accent); background: var(--accent); }
+.deck-set-track > li > small { display: none; }
+.deck-cue { color: #5d6a7c; font-size: 14px; line-height: 1.85; margin-top: 17px; }
+.deck-unilateral.helper { color: var(--deck-muted); font-size: 12px; margin-top: 9px; }
+.deck-action-zone { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 15px; margin-top: 22px; }
+.deck-status { flex-basis: 100%; color: var(--deck-muted); font-size: 12px; line-height: 1.8; margin-bottom: 5px; }
+.deck-timer { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; flex-basis: 100%; color: var(--deck-muted); font-size: 13px; margin-bottom: 10px; }
+.deck-timer strong { color: var(--accent-ink); font-size: 36px; font-weight: 500; line-height: 1.1; letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+.deck-complete.primary { min-height: 49px; min-width: 180px; padding: 12px 23px; font-size: 14px; }
+.deck-skip.text-button, .deck-undo.text-button { color: var(--deck-muted); font-size: 12px; }
+.deck-guide.subtle-details { border-top: 1px solid #edf0f5; margin-top: 0; }
+.deck-guide.subtle-details > summary { min-height: 52px; padding: 10px 0; color: var(--deck-muted); font-size: 12px; }
+.deck-guide .detail-body { padding-bottom: 20px; }
+.deck-guide .detail-list { font-size: 13px; color: #5d6a7c; line-height: 1.9; }
+.deck-guide .detail-body h4 { font-size: 13px; }
+.deck-card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; padding-top: 17px; border-top: 1px solid #edf0f5; }
+.deck-card-footer > p { flex: 1 1 220px; color: var(--deck-muted); font-size: 12px; line-height: 1.8; }
+.deck-card-footer .secondary { min-height: 42px; padding: 9px 16px; background: #f4f6f9; font-size: 12px; color: #4b607d; }
+.deck-gesture-hint { margin-top: 5px; text-align: center; color: #758195; font-size: 11px; line-height: 1.8; }
+.deck-utility { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; padding: 16px 0 2px; }
+.deck-storage-note { flex: 1 1 300px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.deck-reset.text-button, .deck-undo-reset.text-button { min-height: 40px; color: var(--deck-muted); font-size: 12px; }
+.deck-announcement { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* The exercise viewer keeps its own gestures and a comfortable camera height. */
+.deck-demo .exercise-player { border-radius: 18px; }
+.deck-demo .exercise-stage.is-3d { height: 300px; }
+.deck-demo .exercise-stage > svg { max-height: 270px; }
+.deck-demo .animation-toolbar { padding: 14px 12px 0; gap: 8px; }
+.deck-demo .animation-drag-hint { font-size: 10px; }
+.deck-demo .animation-views { flex-wrap: wrap; justify-content: center; gap: 8px; padding: 6px 10px 13px; }
+.deck-demo .animation-view-options { flex: 1 1 200px; display: flex; }
+.deck-demo .animation-view-options button { flex: 1; min-width: 0; padding-inline: 7px; min-height: 40px; }
+.deck-demo .animation-zoom { justify-content: center; }
+.deck-demo .animation-controls { gap: 6px; padding: 12px 8px; }
+.deck-demo .animation-controls button { padding-inline: 11px; font-size: 12px; }
+.deck-demo .animation-phase, .deck-demo .animation-status { font-size: 11px; padding-inline: 12px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .deck-choice:hover { background: #edf2f8; }
+  .deck-choice.is-current:hover { background: #e7f1fe; }
+  .deck-nav .icon-button:hover:not(:disabled) { color: var(--accent-ink); background: #e8f1fc; }
+  .deck-card-footer .secondary:hover { background: #eaf0f7; }
+}
+
+@media (max-width: 760px) {
+  .deck-card { padding: 21px 24px 20px; }
+  .deck-card-main { gap: 24px; }
+  .deck-copy h3 { font-size: 30px; }
+  .deck-prescription strong { font-size: 25px; }
+  .deck-complete.primary { min-width: 0; width: 100%; }
+  .deck-action-zone { gap: 3px 15px; }
+  .deck-card-footer > p { flex-basis: 180px; }
+}
+
+@media (max-width: 600px) {
+  #page-session { padding-top: 17px; }
+  #page-session .session-heading { margin-top: 10px; margin-bottom: 21px; }
+  #page-session .session-heading h1 { font-size: 30px; letter-spacing: -.8px; }
+  #page-session .session-heading .page-description { font-size: 14px; }
+  #page-session .session-meta { gap: 6px 16px; }
+  #page-session .session-meta > span { font-size: 12px; }
+  #page-session .preparation { padding-inline: 15px; border-radius: 16px; }
+  #page-session .preparation > summary { gap: 9px; }
+  #page-session .preparation-heading small { font-size: 11px; }
+  #page-session .preparation .detail-body { padding-left: 0; }
+  #page-session .preparation .detail-list { padding-left: 18px; font-size: 13px; }
+  .workout-deck { margin-top: 27px; margin-bottom: 21px; }
+  .deck-overview { gap: 12px; margin-bottom: 20px; }
+  .deck-overview h2 { font-size: 21px; }
+  .deck-overview > div > p { font-size: 12px; }
+  .deck-total { font-size: 12px; }
+  .deck-rail { gap: 8px; margin-bottom: 7px; }
+  .deck-choice { flex-basis: 157px; padding: 12px; gap: 3px 9px; border-radius: 14px; }
+  .deck-choice strong { font-size: 13px; }
+  .deck-choice small { font-size: 10px; }
+  .deck-stage { padding-top: 7px; padding-bottom: 28px; border-radius: 25px; }
+  .deck-card, .deck-stack::before, .deck-stack::after { border-radius: 23px; }
+  .deck-card { padding: 18px 22px 17px; }
+  .deck-card-top { gap: 10px; }
+  .deck-eyebrow { font-size: 11px; }
+  .deck-nav { gap: 6px; }
+  .deck-nav .icon-button { width: 40px; height: 40px; }
+  .deck-card-main { display: flex; flex-direction: column; align-items: stretch; gap: 21px; padding-top: 18px; padding-bottom: 19px; }
+  .deck-copy { order: -1; }
+  .deck-category { margin-bottom: 8px; font-size: 11px; }
+  .deck-copy h3 { font-size: 30px; letter-spacing: -.8px; }
+  .deck-prescription { margin-top: 15px; }
+  .deck-prescription strong { font-size: 26px; }
+  .deck-prescription > span { font-size: 12px; }
+  .deck-set-track { margin-top: 15px; gap: 7px; }
+  .deck-set-track > li { min-width: 35px; height: 30px; padding-inline: 9px; }
+  .deck-cue { margin-top: 14px; font-size: 13px; }
+  .deck-action-zone { margin-top: 18px; gap: 4px 16px; }
+  .deck-complete.primary { min-height: 48px; font-size: 14px; }
+  .deck-poster { border-radius: 17px; }
+  .deck-demo-toggle.text-button { margin-top: 5px; }
+  .deck-demo { margin-top: 8px; }
+  .deck-demo .exercise-stage.is-3d { height: 280px; }
+  .deck-card-footer { padding-top: 13px; gap: 10px; }
+  .deck-card-footer > p { flex-basis: 100%; font-size: 11px; }
+  .deck-card-footer .secondary { min-height: 44px; font-size: 12px; }
+  .deck-gesture-hint { font-size: 10px; margin-inline: 10px; }
+  .deck-utility { gap: 0 15px; padding-top: 12px; }
+  .deck-storage-note { flex-basis: 100%; font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  .deck-overview { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+  .deck-total { grid-row: 2; justify-self: start; padding: 0; }
+  .deck-card { padding-inline: 17px; }
+  .deck-copy h3 { font-size: 28px; }
+  .deck-prescription strong { font-size: 24px; }
+  .deck-demo .animation-toolbar { align-items: flex-start; flex-wrap: wrap; gap: 3px; }
+  .deck-demo .animation-drag-hint { flex-basis: 100%; }
+  .deck-demo .exercise-stage.is-3d { height: 260px; }
+  .deck-demo .animation-controls button { padding-inline: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-card, .deck-choice, .deck-set-track > li { transition: none; }
+  .deck-progress::-webkit-progress-value { transition: none; }
+  .deck-rail { scroll-behavior: auto; }
+}

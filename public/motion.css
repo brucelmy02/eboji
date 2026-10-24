@@ -1,0 +1,285 @@
+/* A shared motion rhythm: immediate feedback, quiet transitions, no ambient motion. */
+:root {
+  --motion-press: 110ms;
+  --motion-control: 180ms;
+  --motion-travel: 320ms;
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --motion-settle: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* Route, step, disclosure and dialog transitions are owned by motion.js. */
+.page { animation: none; }
+dialog::backdrop { opacity: 1; transition: opacity 180ms ease; }
+dialog[data-motion-state=closing]::backdrop { opacity: 0; }
+@starting-style {
+  dialog[open]::backdrop { opacity: 0; }
+}
+
+:is(.primary, .secondary, .icon-button, .text-button, .back-link, .danger-button) {
+  transition: transform var(--motion-control) var(--motion-ease),
+    background-color var(--motion-control) ease,
+    color var(--motion-control) ease,
+    box-shadow var(--motion-control) ease,
+    opacity var(--motion-control) ease;
+}
+.primary > [aria-hidden], .back-link > [aria-hidden], .record-arrow {
+  display: inline-block;
+  transition: transform var(--motion-control) var(--motion-ease);
+}
+:is(.primary, .secondary, .icon-button):active:not(:disabled) {
+  transform: scale(.975);
+  transition-duration: var(--motion-press);
+}
+:is(.text-button, .back-link, .danger-button):active:not(:disabled) { opacity: .64; }
+:is(.primary, .secondary, .icon-button):disabled { transform: none; box-shadow: none; }
+
+/* Focus stays visible while its surrounding surface gently responds. */
+.field :is(select, input:not([type=radio]), textarea), .input-with-unit {
+  transition: border-color var(--motion-control) ease,
+    box-shadow var(--motion-control) ease,
+    background-color var(--motion-control) ease;
+}
+.field > :is(select, input:not([type=radio]), textarea):focus,
+.input-with-unit:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgb(0 113 227 / 8%);
+}
+.input-with-unit input:not([type=radio]) { box-shadow: none; }
+.choice-card {
+  transition: border-color var(--motion-control) ease,
+    background-color var(--motion-control) ease,
+    color var(--motion-control) ease,
+    box-shadow var(--motion-control) ease,
+    transform var(--motion-control) var(--motion-ease);
+}
+.choice-check {
+  transition: border-width var(--motion-control) var(--motion-settle),
+    border-color var(--motion-control) ease,
+    background-color var(--motion-control) ease;
+}
+.choice-card:active:not(:has(input:disabled)) {
+  transform: scale(.99);
+  transition-duration: var(--motion-press);
+}
+.choice-card:has(input:disabled) { cursor: default; }
+.step-marker, .step-line {
+  transition: background-color var(--motion-control) ease, color var(--motion-control) ease;
+}
+
+/* Each selector keeps a single moving surface behind its persistent controls. */
+@supports selector(:has(*)) {
+  :is(.main-nav, .segmented-radio, .week-strip, .record-tabs) {
+    --indicator-index: 0;
+    --indicator-count: 3;
+    --indicator-inset: 4px;
+    --indicator-gap: 4px;
+    --indicator-radius: 10px;
+    position: relative;
+    isolation: isolate;
+  }
+  :is(.main-nav, .segmented-radio, .week-strip, .record-tabs)::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    top: var(--indicator-inset);
+    bottom: var(--indicator-inset);
+    left: var(--indicator-inset);
+    width: calc((100% - (2 * var(--indicator-inset)) - ((var(--indicator-count) - 1) * var(--indicator-gap))) / var(--indicator-count));
+    border-radius: var(--indicator-radius);
+    background: white;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 7%);
+    opacity: 0;
+    transform: translateX(calc(var(--indicator-index) * (100% + var(--indicator-gap))));
+    transition: transform var(--motion-travel) var(--motion-ease), opacity var(--motion-control) ease;
+  }
+  :is(.main-nav, .segmented-radio, .week-strip, .record-tabs) > * {
+    position: relative;
+    z-index: 1;
+  }
+  :is(.main-nav, .segmented-radio, .week-strip, .record-tabs):has(> :is([aria-current=page], .active))::before,
+  .segmented-radio:has(input:checked)::before { opacity: 1; }
+
+  .main-nav {
+    --indicator-inset: 0px;
+    --indicator-gap: 8px;
+    --indicator-radius: 100px;
+    display: grid;
+    grid-template-columns: repeat(var(--indicator-count), minmax(0, 1fr));
+  }
+  .main-nav:has(> a:nth-child(2):last-child) { --indicator-count: 2; }
+  .main-nav:has(> a:nth-child(3):last-child) { --indicator-count: 3; }
+  .main-nav::before { background: var(--surface-muted); box-shadow: none; }
+  .main-nav a, .main-nav [aria-current=page] { background: transparent; }
+  .main-nav:has(> :nth-child(2)[aria-current=page]) { --indicator-index: 1; }
+  .main-nav:has(> :nth-child(3)[aria-current=page]) { --indicator-index: 2; }
+
+  .segmented-radio .choice-card,
+  .segmented-radio .choice-card:has(input:checked) { background: transparent; box-shadow: none; }
+  .segmented-radio:has(> :nth-child(2) input:checked) { --indicator-index: 1; }
+  .segmented-radio:has(> :nth-child(3) input:checked) { --indicator-index: 2; }
+
+  .week-strip {
+    --indicator-count: 7;
+    --indicator-inset: 6px;
+    --indicator-gap: 5px;
+    --indicator-radius: 16px;
+  }
+  .day-button, .day-button.active { background: transparent; box-shadow: none; }
+  .week-strip:has(> :nth-child(2).active) { --indicator-index: 1; }
+  .week-strip:has(> :nth-child(3).active) { --indicator-index: 2; }
+  .week-strip:has(> :nth-child(4).active) { --indicator-index: 3; }
+  .week-strip:has(> :nth-child(5).active) { --indicator-index: 4; }
+  .week-strip:has(> :nth-child(6).active) { --indicator-index: 5; }
+  .week-strip:has(> :nth-child(7).active) { --indicator-index: 6; }
+
+  .record-tabs {
+    --indicator-count: 2;
+    --indicator-radius: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .record-tabs .active { background: transparent; box-shadow: none; }
+  .record-tabs:has(> :nth-child(2).active) { --indicator-index: 1; }
+}
+.main-nav a, .day-button, .record-tabs button {
+  transition: color var(--motion-control) ease,
+    background-color var(--motion-control) ease,
+    transform var(--motion-control) var(--motion-ease);
+}
+.day-button i { transition: background-color var(--motion-control) ease; }
+:is(.day-button, .record-tabs button):active:not(:disabled) {
+  transform: scale(.97);
+  transition-duration: var(--motion-press);
+}
+
+/* The rotating graphic avoids switching a text glyph mid-transition. */
+.subtle-details > summary::after,
+.exercise-item > summary::after,
+.subtle-details[open] > summary::after,
+.exercise-item[open] > summary::after {
+  content: "";
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+  background-size: 12px 1.5px, 1.5px 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform var(--motion-travel) var(--motion-ease),
+    background-size var(--motion-control) ease,
+    background-color var(--motion-control) ease,
+    color var(--motion-control) ease;
+}
+.subtle-details[open] > summary::after,
+.exercise-item[open] > summary::after {
+  background-size: 12px 1.5px, 1.5px 0;
+  transform: rotate(180deg);
+}
+.subtle-details[data-motion-state=closing] > summary::after,
+.exercise-item[data-motion-state=closing] > summary::after {
+  background-size: 12px 1.5px, 1.5px 12px;
+  transform: rotate(0);
+}
+.exercise-item {
+  transition: box-shadow var(--motion-travel) ease, border-color var(--motion-control) ease;
+}
+.feedback-record-button {
+  transition: transform var(--motion-control) var(--motion-ease),
+    background-color var(--motion-control) ease,
+    border-color var(--motion-control) ease,
+    box-shadow var(--motion-control) ease;
+}
+.feedback-record-button:active { transform: scale(.992); }
+
+/* A short arrival is enough for feedback; the spinner alone indicates ongoing work. */
+.toast:not([hidden]) { animation: toast-arrive 280ms var(--motion-ease) both; }
+.progress-card:not([hidden]),
+:is(.error-message, .notice, .stale-notice, .applied-notice):not([hidden]) {
+  animation: feedback-arrive 220ms var(--motion-ease) both;
+}
+.progress-card { border: 1px solid var(--accent-line); }
+.progress-card strong { display: block; }
+.progress-card p { font-variant-numeric: tabular-nums; }
+.spinner { animation-duration: 1s; }
+@keyframes toast-arrive {
+  from { opacity: 0; transform: translate(-50%, 10px) scale(.98); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+@keyframes feedback-arrive {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover is intentionally restricted to devices with a precise, real hover pointer. */
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 16px rgb(0 113 227 / 17%);
+  }
+  .secondary:hover:not(:disabled), .icon-button:hover:not(:disabled) {
+    background: var(--surface-hover);
+    transform: translateY(-1px);
+  }
+  .primary:hover:not(:disabled) > [aria-hidden] { transform: translateX(2px); }
+  .back-link:hover > [aria-hidden] { transform: translateX(-2px); }
+  .choice-card:hover:not(:has(input:disabled)):not(:has(input:checked)) {
+    border-color: var(--line-strong);
+    background-color: #fafafa;
+  }
+  .segmented-radio .choice-card:hover:not(:has(input:disabled)):not(:has(input:checked)) {
+    background-color: rgb(255 255 255 / 40%);
+  }
+  .day-button:hover:not(:disabled):not(.active) { color: var(--ink); background: rgb(255 255 255 / 48%); }
+  .main-nav a:hover:not([aria-current=page]):not([aria-disabled=true]) { background: rgb(245 245 247 / 65%); color: var(--ink); }
+  .record-tabs button:hover:not(.active):not(:disabled) { color: var(--ink); }
+  .exercise-item:hover { border-color: #d2d2d7; }
+  .exercise-item > summary:hover::after { color: var(--accent-ink); background-color: var(--accent-soft); }
+  .subtle-details > summary:hover::after { color: var(--accent-ink); }
+  .feedback-record-button:hover {
+    transform: translateY(-2px);
+    background: var(--surface-muted);
+    box-shadow: 0 8px 24px rgb(29 29 31 / 5%);
+  }
+  .feedback-record-button:hover .record-arrow { transform: translateX(3px); }
+  :is(.primary, .secondary, .icon-button):hover:active:not(:disabled) { transform: scale(.975); }
+  .feedback-record-button:hover:active { transform: scale(.992); }
+}
+
+/* Neutralize the original hover-only states on touch, where :hover can stay latched. */
+@media (hover: none), (pointer: coarse) {
+  .primary:hover:not(:disabled) { background: var(--accent); box-shadow: none; }
+  .secondary:hover:not(:disabled), .icon-button:hover { background: var(--surface-muted); }
+  .empty-records .secondary:hover, .account-card .secondary:hover { background: white; }
+  .icon-button:hover { color: var(--muted); }
+  .main-nav a:hover { color: var(--muted); background: transparent; }
+  .main-nav [aria-current=page]:hover { color: var(--ink); }
+  .day-button:hover:not(:disabled) { color: var(--muted); background: transparent; }
+  .day-button.active:hover:not(:disabled) { color: var(--accent-ink); }
+  .choice-card:hover { border-color: var(--line); }
+  .choice-card:has(input:checked):hover { border-color: var(--accent); }
+  .field :is(select, input, textarea):hover:not(:focus) { border-color: var(--line-strong); }
+  .exercise-item:hover { border-color: var(--line); }
+  .feedback-record-button:hover { background: white; box-shadow: none; }
+  .text-button:hover:not(:disabled), .back-link:hover, .danger-button:hover:not(:disabled) { text-decoration: none; }
+  .illustration-note a:hover, .illustration-credit a:hover { color: inherit; }
+}
+
+@media (max-width: 520px) {
+  .main-nav { --indicator-gap: 2px; }
+  .week-strip { --indicator-inset: 4px; --indicator-gap: 2px; --indicator-radius: 14px; }
+  .exercise-item > summary::after,
+  .exercise-item[open] > summary::after { flex-basis: 26px; width: 26px; height: 26px; }
+  .toast { bottom: max(18px, env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  :is(.primary, .secondary, .icon-button, .choice-card, .day-button, .record-tabs button, .feedback-record-button),
+  .primary > [aria-hidden], .back-link > [aria-hidden], .record-arrow,
+  .subtle-details > summary::after, .exercise-item > summary::after {
+    transform: none !important;
+  }
+  /* Selection positioning and the toast's centering are layout, so they remain intact. */
+}

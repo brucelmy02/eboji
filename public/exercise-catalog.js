@@ -1,0 +1,225 @@
+// eboji's original, concise home-exercise coaching text.
+// References describe the base movement or its training principles; home variants
+// are adapted here. These are not licensed copies of provider images or videos.
+export const bodyPartLabels = Object.freeze({ legs: '腿部', glutes: '臀部', chest: '胸部', back: '背部', shoulders: '肩部', arms: '手臂', core: '核心', fullbody: '全身', mobility: '活动与拉伸' });
+export const equipmentLabels = Object.freeze({ bodyweight: '徒手', dumbbells: '哑铃' });
+export const levelLabels = Object.freeze({ beginner: '基础', intermediate: '进阶' });
+
+const ace = 'https://www.acefitness.org/resources/everyone/exercise-library/';
+const sources = {
+  squat: `${ace}135/bodyweight-squat/`,
+  bridge: `${ace}49/glute-bridge/`,
+  hip: 'https://www.acefitness.org/resources/pros/expert-articles/9158/ankles-knees-and-hips-10-joint-friendly-exercises-for-the-lower-extremity/',
+  glutes: 'https://www.acefitness.org/resources/pros/expert-articles/8807/strength-training-the-glutes-an-evidence-based-approach/',
+  abduction: `${ace}38/side-lying-hip-abduction/`,
+  rdl: 'https://www.acefitness.org/continuing-education/certified/may-2025/8865/the-ace-do-it-better-series-the-romanian-deadlift/',
+  singleRdl: `${ace}127/single-arm-single-leg-romanian-dead-lift/`,
+  push: 'https://www.nasm.org/resource-center/exercise-library/push-up',
+  upper: 'https://www.acefitness.org/continuing-education/certified/august-2023/8398/the-ultimate-ace-workout-an-evidence-based-approach-to-programming-and-class-design/',
+  cobra: 'https://www.nasm.org/resource-center/exercise-library/floor-prone-cobra',
+  arms: 'https://blog.nasm.org/workout-plans/9-best-arm-exercises/',
+  biceps: 'https://www.acefitness.org/resources/pros/expert-articles/9033/building-better-biceps-evidence-based-exercises-for-strength-and-function/',
+  plank: 'https://www.nasm.org/resource-center/exercise-library/plank',
+  stability: 'https://www.acefitness.org/continuing-education/certified/november-2018/7120/spinal-stability-to-brace-or-not-to-brace/',
+  abs: 'https://www.acefitness.org/getfit/studies/BestWorstAbExercises.pdf',
+  nasm: 'https://www.nasm.org/resource-center/exercise-library',
+  thoracic: 'https://www.nasm.org/resource-center/blog/training/shoulder-mobility-for-overhead-athletes-a-screening-guide',
+  back: 'https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/back-pain/art-20546859',
+  stretch: 'https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/stretching/art-20546848',
+  technique: 'https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842',
+  cardio: 'https://www.mayoclinichealthsystem.org/-/media/local-files/cannon-falls/documents/wellness-center/home-workouts-cardio_strength.pdf',
+};
+
+function exercise(id, name, aliases, equipment, bodyPart, muscles, level, unilateral, instructions, cues, pitfalls, refs, options = {}) {
+  return Object.freeze({ id, name, aliases, equipment, bodyPart, muscles, level, support: 'none', unilateral, purpose: 'strength', instructions, cues, pitfalls, sourceUrls: refs.map(key => sources[key]), ...options });
+}
+
+export const exerciseCatalog = Object.freeze([
+  exercise('bodyweight-squat', '徒手深蹲', ['自重深蹲', 'bodyweight squat', 'bodyweight squats', 'air squat'], 'bodyweight', 'legs', ['股四头肌', '臀大肌'], 'beginner', false,
+    ['双脚约肩宽，脚尖自然微向外。', '臀部向后下方移动，同时屈膝。', '全脚掌压地，站回起始姿势。'], ['膝盖跟随脚尖方向。', '下蹲到脚跟不抬、背部可控制的深度。'], ['膝盖向内夹。', '为蹲低而弓背或抬脚跟。'], ['squat']),
+  exercise('sumo-squat', '徒手相扑深蹲', ['相扑深蹲', '徒手宽距深蹲', 'bodyweight sumo squat', 'sumo squat'], 'bodyweight', 'legs', ['股四头肌', '臀大肌', '内收肌'], 'beginner', false,
+    ['站距略宽于肩，脚尖适度向外。', '膝盖沿脚尖方向弯曲，缓慢下蹲。', '脚掌压地，伸髋伸膝站起。'], ['站距以髋部舒适为准。', '胸廓与骨盆保持稳定。'], ['脚尖过度外转。', '膝盖内扣。'], ['squat']),
+  exercise('split-squat', '徒手分腿蹲', ['原地分腿蹲', 'split squat', 'bodyweight split squat'], 'bodyweight', 'legs', ['股四头肌', '臀大肌'], 'beginner', true,
+    ['前后分腿站稳，后脚跟抬起。', '两膝缓慢弯曲，后膝向地面下降。', '前脚压地回升；完成后换侧，每侧分别计数。'], ['双脚左右保持一点间距。', '重心平稳下降，不追求后膝触地。'], ['前后脚站在一条线上。', '身体左右晃动。'], ['hip', 'squat']),
+  exercise('reverse-lunge', '徒手后撤弓步', ['后撤弓步', '后撤箭步蹲', 'reverse lunge', 'bodyweight reverse lunge'], 'bodyweight', 'legs', ['股四头肌', '臀大肌'], 'beginner', true,
+    ['站直，双脚约髋宽。', '一脚向后迈出，双膝弯曲下降。', '前脚发力回到站立；交替完成，每侧分别计数。'], ['前脚全脚掌保持着地。', '先站稳，再进行下一次。'], ['后撤距离过短。', '前膝向内偏移。'], ['hip']),
+  exercise('forward-lunge', '徒手前弓步', ['前弓步', '前弓箭步蹲', 'forward lunge', 'bodyweight forward lunge'], 'bodyweight', 'legs', ['股四头肌', '臀大肌'], 'intermediate', true,
+    ['双脚约髋宽站立。', '一脚向前迈出，屈膝缓冲并降低身体。', '前脚推地返回；交替练习，每侧分别计数。'], ['落脚轻，膝盖跟随脚尖。', '保持躯干稳定。'], ['迈步后直接砸向地面。', '膝盖内扣。'], ['glutes']),
+  exercise('lateral-lunge', '徒手侧弓步', ['侧弓步', '侧向弓步', '侧弓步蹲', 'lateral lunge', 'bodyweight lateral lunge'], 'bodyweight', 'legs', ['股四头肌', '臀大肌', '内收肌'], 'intermediate', true,
+    ['双脚平行站立，向一侧迈步。', '迈步侧屈膝并向后坐髋，另一腿保持伸展。', '屈膝侧推地返回；换侧，每侧分别计数。'], ['两脚尽量朝前，脚掌贴地。', '只下降到能稳定回来的深度。'], ['屈膝侧膝盖内扣。', '躯干前栽。'], ['squat', 'glutes']),
+  exercise('calf-raise', '站姿提踵', ['徒手提踵', '双脚提踵', 'calf raise', 'standing calf raise'], 'bodyweight', 'legs', ['腓肠肌', '比目鱼肌'], 'beginner', false,
+    ['双脚约髋宽，脚尖朝前。', '缓慢抬高脚跟，用前脚掌支撑。', '停顿后缓慢将脚跟放回地面。'], ['脚踝保持朝正前方。', '只抬到能够平衡的高度。'], ['脚踝向外翻。', '借弹跳快速起落。'], ['hip']),
+  exercise('single-leg-calf-raise', '扶墙单腿提踵', ['单腿提踵', 'single leg calf raise', 'wall supported single leg calf raise'], 'bodyweight', 'legs', ['腓肠肌', '比目鱼肌'], 'intermediate', true,
+    ['一手轻扶墙，一脚承重，另一脚离地。', '承重侧缓慢抬起脚跟。', '控制下降；完成后换腿，每侧分别计数。'], ['扶墙用于平衡。', '承重脚踝保持稳定。'], ['用手拉起身体。', '下落失去控制。'], ['hip'], { support: 'wall' }),
+  exercise('goblet-squat', '哑铃高脚杯深蹲', ['高脚杯深蹲', '酒杯深蹲', 'goblet squat', 'dumbbell goblet squat'], 'dumbbells', 'legs', ['股四头肌', '臀大肌', '腹肌'], 'beginner', false,
+    ['双手牢握一只哑铃于胸前，双脚约肩宽。', '屈髋屈膝下蹲，哑铃靠近身体。', '全脚掌推地，站直还原。'], ['选能稳定握住的轻重量。', '膝盖方向与脚尖一致。'], ['哑铃离身体过远。', '下蹲时背部塌陷。'], ['squat', 'technique']),
+  exercise('dumbbell-squat', '哑铃深蹲', ['双哑铃深蹲', 'dumbbell squat'], 'dumbbells', 'legs', ['股四头肌', '臀大肌'], 'beginner', false,
+    ['双手各握哑铃放在身体两侧。', '双脚约肩宽，屈髋屈膝缓慢下蹲。', '双脚推地站起，哑铃保持在体侧。'], ['肩膀自然下沉。', '下蹲与站起都保持平稳。'], ['耸肩提哑铃。', '膝盖内扣或脚跟离地。'], ['squat', 'technique']),
+  exercise('dumbbell-sumo-squat', '哑铃相扑深蹲', ['哑铃宽距深蹲', 'dumbbell sumo squat'], 'dumbbells', 'legs', ['股四头肌', '臀大肌', '内收肌'], 'beginner', false,
+    ['宽距站立，双手握一只哑铃垂于身前。', '脚尖适度向外，沿脚尖方向屈膝下蹲。', '全脚掌发力站起，手臂自然垂直。'], ['膝盖与脚尖方向相同。', '深度以背部稳定为准。'], ['为让哑铃触地而弓背。', '站距过宽导致不稳。'], ['squat', 'technique']),
+  exercise('dumbbell-split-squat', '哑铃分腿蹲', ['哑铃原地分腿蹲', 'dumbbell split squat'], 'dumbbells', 'legs', ['股四头肌', '臀大肌'], 'intermediate', true,
+    ['双手持哑铃于体侧，前后分腿站稳。', '缓慢屈膝，让身体垂直下降。', '前脚推地回升；换侧，每侧分别计数。'], ['先掌握徒手版本再加重量。', '前后脚左右错开，保持平衡。'], ['身体向一侧倾斜。', '哑铃随身体晃动。'], ['hip', 'technique']),
+  exercise('dumbbell-reverse-lunge', '哑铃后撤弓步', ['哑铃后撤箭步蹲', 'dumbbell reverse lunge'], 'dumbbells', 'legs', ['股四头肌', '臀大肌'], 'intermediate', true,
+    ['持哑铃于体侧，站直。', '一脚向后迈出，双膝缓慢弯曲。', '前脚推地返回；交替练习，每侧分别计数。'], ['哑铃贴近身体两侧。', '每次先站稳再换腿。'], ['后撤时失去平衡。', '前膝内扣。'], ['hip', 'technique']),
+  exercise('dumbbell-lateral-lunge', '哑铃侧弓步', ['哑铃侧向弓步', 'dumbbell lateral lunge'], 'dumbbells', 'legs', ['股四头肌', '臀大肌', '内收肌'], 'intermediate', true,
+    ['双手持哑铃，站直后向一侧迈步。', '迈步侧屈膝坐髋，哑铃靠近该腿两侧。', '迈步侧推地回位；换侧，每侧分别计数。'], ['先从较小幅度和轻重量开始。', '支撑脚保持全脚掌着地。'], ['弯腰让哑铃落地。', '膝盖向内倒。'], ['squat', 'technique']),
+  exercise('dumbbell-calf-raise', '哑铃提踵', ['哑铃站姿提踵', 'dumbbell calf raise'], 'dumbbells', 'legs', ['腓肠肌', '比目鱼肌'], 'intermediate', false,
+    ['双手各握哑铃，双脚约髋宽站稳。', '慢慢提起脚跟，身体向上移动。', '短暂停顿后缓慢落回地面。'], ['选择不影响平衡的重量。', '脚踝保持正直。'], ['身体前后摇摆。', '脚跟快速砸地。'], ['hip', 'technique']),
+
+  exercise('glute-bridge', '臀桥', ['仰卧臀桥', '双腿臀桥', '徒手臀桥', 'glute bridge', 'glute bridges'], 'bodyweight', 'glutes', ['臀大肌', '腘绳肌'], 'beginner', false,
+    ['仰卧屈膝，双脚约髋宽踩地。', '呼气收紧臀部，抬髋至肩、髋、膝大致成线。', '短暂停顿，控制臀部落回。'], ['头与肩保持放松着地。', '抬髋时肋骨不过度上翻。'], ['用腰部反弓代替抬髋。', '双膝向内夹。'], ['bridge']),
+  exercise('single-leg-glute-bridge', '单腿臀桥', ['单脚臀桥', 'single leg glute bridge'], 'bodyweight', 'glutes', ['臀大肌', '腘绳肌'], 'intermediate', true,
+    ['仰卧屈膝，一脚踩地，另一腿抬离地面。', '支撑脚推地，抬起髋部。', '骨盆保持水平并缓慢放下；换侧，每侧分别计数。'], ['抬高幅度以骨盆稳定为准。', '先完成稳定的双腿臀桥。'], ['骨盆歪向一侧。', '用腰部顶起身体。'], ['bridge']),
+  exercise('frog-pump', '蛙式臀桥', ['蛙泵', 'frog pump', 'frog bridge'], 'bodyweight', 'glutes', ['臀大肌', '臀中肌'], 'beginner', false,
+    ['仰卧，双脚掌相对，膝盖自然向两侧打开。', '保持舒适的开膝角度，收臀抬髋。', '缓慢落回，不让腰部过度反弓。'], ['不强行把膝盖压向地面。', '以臀部发力的小幅度为主。'], ['过度打开髋部。', '靠甩腰快速起落。'], ['bridge', 'glutes']),
+  exercise('quadruped-hip-extension', '跪姿后抬腿', ['四点跪姿髋伸展', '驴踢', 'donkey kick', 'quadruped hip extension'], 'bodyweight', 'glutes', ['臀大肌', '腘绳肌'], 'beginner', true,
+    ['四点跪姿，手在肩下、膝在髋下。', '一侧膝盖保持弯曲，脚掌向后上方抬起。', '大腿接近躯干高度后缓慢收回；每侧分别计数。'], ['腹部轻收，骨盆朝向地面。', '抬腿到腰部不反弓的范围。'], ['为了抬高而塌腰。', '骨盆扭转。'], ['glutes']),
+  exercise('fire-hydrant', '跪姿侧抬腿', ['消防栓式', 'fire hydrant'], 'bodyweight', 'glutes', ['臀中肌', '臀小肌'], 'beginner', true,
+    ['双手与双膝撑地，躯干稳定。', '一侧膝盖保持弯曲，向外侧抬起。', '缓慢放回；换侧，每侧分别计数。'], ['抬腿时骨盆尽量保持水平。', '幅度小一些也可以。'], ['重心大幅偏向支撑侧。', '扭腰追求高度。'], ['abduction', 'glutes']),
+  exercise('side-lying-leg-raise', '侧卧抬腿', ['侧卧髋外展', '侧卧直腿抬高', 'side lying leg raise', 'side lying hip abduction'], 'bodyweight', 'glutes', ['臀中肌', '臀小肌'], 'beginner', true,
+    ['侧卧，肩与髋上下叠放，头部有支撑。', '上侧腿伸直，缓慢向上抬起。', '控制落回；翻身换侧，每侧分别计数。'], ['脚尖大致朝前。', '在骨盆不翻转的范围内抬腿。'], ['脚尖朝天。', '抬腿过高带动腰部侧弯。'], ['abduction']),
+  exercise('clamshell', '蚌式开合', ['侧卧蚌式', '蚌式', 'clamshell', 'clam shell'], 'bodyweight', 'glutes', ['臀中肌', '臀小肌'], 'beginner', true,
+    ['侧卧屈髋屈膝，双脚叠放。', '脚跟保持相接，上侧膝盖缓慢打开。', '控制合拢；换侧，每侧分别计数。'], ['骨盆保持上下叠放。', '只打开到躯干仍稳定的范围。'], ['向后翻身代替开膝。', '双脚分开。'], ['hip']),
+  exercise('bodyweight-good-morning', '徒手早安式', ['徒手髋铰链', '自重早安式', 'bodyweight good morning', 'hip hinge drill'], 'bodyweight', 'glutes', ['臀大肌', '腘绳肌', '竖脊肌'], 'beginner', false,
+    ['双脚约髋宽，双手放胸前或髋部。', '膝盖微屈，臀部向后送，躯干随髋部前倾。', '脚掌推地，伸髋回到直立。'], ['背部保持自然曲线。', '大腿后侧出现张力即可回升。'], ['弯腰代替屈髋。', '把动作做成深蹲。'], ['rdl']),
+  exercise('dumbbell-rdl', '哑铃罗马尼亚硬拉', ['哑铃RDL', 'dumbbell romanian deadlift', 'dumbbell rdl'], 'dumbbells', 'glutes', ['腘绳肌', '臀大肌', '竖脊肌'], 'intermediate', false,
+    ['站直持哑铃于大腿前，膝盖微屈。', '髋部向后推，哑铃沿腿前下移。', '大腿后侧感到张力后，伸髋回到站立。'], ['哑铃靠近腿部。', '下降深度由背部稳定性决定。'], ['弓背追求触地。', '站起后过度后仰。'], ['rdl']),
+  exercise('dumbbell-deadlift', '哑铃硬拉', ['哑铃屈腿硬拉', 'dumbbell deadlift'], 'dumbbells', 'legs', ['臀大肌', '腘绳肌', '股四头肌'], 'intermediate', false,
+    ['持哑铃于体侧，双脚约髋宽站立。', '同时屈髋屈膝，哑铃贴近小腿下降。', '在背部稳定的深度停下，脚掌推地站直。'], ['无需每次把哑铃放到地上。', '髋与肩一起上升。'], ['弓背拉起重量。', '先伸膝再用腰抬起。'], ['rdl', 'technique']),
+  exercise('dumbbell-single-leg-rdl', '哑铃单腿罗马尼亚硬拉', ['哑铃单腿RDL', 'dumbbell single leg rdl', 'dumbbell single leg romanian deadlift'], 'dumbbells', 'glutes', ['臀大肌', '腘绳肌', '臀中肌'], 'intermediate', true,
+    ['一腿站稳，支撑腿对侧手握轻哑铃。', '支撑膝微屈，髋向后折，另一腿向后伸展。', '保持骨盆朝下，伸髋站回；每侧分别计数。'], ['先掌握双腿髋铰链和平衡。', '开始只用很小的前倾幅度。'], ['骨盆向外翻开。', '为触地而弓背。'], ['singleRdl']),
+  exercise('dumbbell-glute-bridge', '哑铃臀桥', ['哑铃负重臀桥', 'dumbbell glute bridge'], 'dumbbells', 'glutes', ['臀大肌', '腘绳肌'], 'intermediate', false,
+    ['仰卧屈膝，将轻哑铃稳放于髋部并双手扶住。', '双脚推地，收臀抬髋。', '肩髋膝大致成线后，缓慢放下。'], ['用折叠毛巾垫住接触处。', '全过程固定哑铃，避免滚动。'], ['哑铃压在腹部。', '腰部过度反弓。'], ['bridge', 'technique']),
+
+  exercise('wall-push-up', '靠墙俯卧撑', ['墙壁俯卧撑', '墙上俯卧撑', 'wall push up', 'wall push-up'], 'bodyweight', 'chest', ['胸大肌', '肱三头肌', '三角肌前束'], 'beginner', false,
+    ['面对稳固墙面，双手在胸高处撑墙。', '身体保持一线，屈肘向墙靠近。', '双手推墙，平稳回到起始位置。'], ['脚离墙越近越轻松。', '肘部向后外侧，避免完全横张。'], ['腰部塌下。', '只用头部向前探。'], ['push'], { support: 'wall' }),
+  exercise('knee-push-up', '跪姿俯卧撑', ['跪式俯卧撑', 'knee push-up', 'knee push-ups', 'kneeling push-up', 'kneeling push-ups'], 'bodyweight', 'chest', ['胸大肌', '肱三头肌', '三角肌前束'], 'beginner', false,
+    ['双膝着地，双手略宽于肩。', '肩、髋、膝保持一线，屈肘降下胸部。', '推地伸肘，回到支撑姿势。'], ['身体整体移动。', '降低到仍能平稳推回的深度。'], ['臀部向后坐。', '塌腰或肘部完全外张。'], ['push']),
+  exercise('push-up', '标准俯卧撑', ['俯卧撑', '标准伏地挺身', 'push up', 'push-up', 'push-ups'], 'bodyweight', 'chest', ['胸大肌', '肱三头肌', '三角肌前束'], 'intermediate', false,
+    ['双手略宽于肩，双脚向后伸展。', '头到脚跟保持一线，屈肘降低胸部。', '双手推地，整体回到高位。'], ['腹部与臀部保持张力。', '无法保持姿势时改用跪姿或墙壁版。'], ['腰部下塌。', '头先落下而胸部不动。'], ['push']),
+  exercise('close-grip-push-up', '窄距俯卧撑', ['窄距伏地挺身', 'close grip push up', 'close-grip push-up'], 'bodyweight', 'arms', ['肱三头肌', '胸大肌', '三角肌前束'], 'intermediate', false,
+    ['高位支撑，双手比常规俯卧撑略靠近。', '肘部靠近躯干，缓慢降低身体。', '保持躯干稳定，伸肘推回。'], ['手距以腕部舒适为准，不必拼成菱形。', '先掌握标准俯卧撑。'], ['肩部前顶或腰部塌下。', '手距过窄造成腕部不适。'], ['push', 'upper']),
+  exercise('dumbbell-floor-press', '哑铃地板卧推', ['哑铃地面卧推', 'dumbbell floor press'], 'dumbbells', 'chest', ['胸大肌', '肱三头肌', '三角肌前束'], 'beginner', false,
+    ['仰卧屈膝，双手握哑铃，前臂竖直。', '将哑铃向胸部上方推起。', '缓慢下降，直到上臂轻触地面。'], ['手腕与前臂对齐。', '上臂与躯干保持舒适夹角。'], ['肘部快速撞击地面。', '手腕后折。'], ['push', 'technique']),
+  exercise('dumbbell-floor-squeeze-press', '哑铃地板夹胸推', ['哑铃地板挤压卧推', 'dumbbell floor squeeze press'], 'dumbbells', 'chest', ['胸大肌', '肱三头肌'], 'intermediate', false,
+    ['仰卧屈膝，两只轻哑铃以对握方式靠在一起。', '轻轻向内挤压，同时向胸部上方推起。', '保持控制，缓慢下降至上臂轻触地面。'], ['只用能稳固握持的重量。', '肘部靠近身体，手腕中立。'], ['挤压过猛导致手腕偏折。', '下降时哑铃失控。'], ['technique', 'push']),
+
+  exercise('prone-w-raise', '俯卧W抬臂', ['俯卧W字抬臂', 'prone w raise'], 'bodyweight', 'back', ['斜方肌', '菱形肌', '肩袖肌群'], 'beginner', false,
+    ['俯卧，额头朝下，双肘弯曲摆成W形。', '肩胛轻轻向后下方收，手臂小幅离地。', '短暂停顿后缓慢放回。'], ['颈部延续脊柱方向。', '用上背控制，不追求抬高。'], ['耸肩。', '抬头或反弓腰部。'], ['upper', 'thoracic']),
+  exercise('prone-y-raise', '俯卧Y抬臂', ['俯卧Y字抬臂', 'prone y raise'], 'bodyweight', 'back', ['斜方肌下束', '三角肌后束', '肩袖肌群'], 'beginner', false,
+    ['俯卧，双臂斜向前伸成Y形，拇指朝上。', '肩膀远离耳朵，将手臂小幅抬离地面。', '缓慢放回，重复。'], ['腹部轻收，保持腰部稳定。', '抬高幅度以肩部舒适为准。'], ['耸肩抬臂。', '抬头借力。'], ['upper', 'thoracic']),
+  exercise('reverse-snow-angel', '俯卧反向雪天使', ['反向雪天使', '俯卧划臂', 'reverse snow angel'], 'bodyweight', 'back', ['斜方肌', '菱形肌', '三角肌后束'], 'intermediate', false,
+    ['俯卧，手臂放体侧，颈部放松。', '手臂轻离地，沿两侧缓慢划向头顶。', '在舒适范围内沿原路返回体侧。'], ['全程缓慢，肩膀远离耳朵。', '肩部活动不足时缩小划臂范围。'], ['反弓腰部增加幅度。', '肩部疼痛时强行向上划。'], ['upper', 'thoracic']),
+  exercise('prone-cobra', '俯卧眼镜蛇保持', ['俯卧眼镜蛇式保持', 'prone cobra', 'floor prone cobra'], 'bodyweight', 'back', ['斜方肌', '菱形肌', '竖脊肌'], 'beginner', false,
+    ['俯卧，手臂置于身体两侧。', '肩胛向后下方收，胸部与手臂轻轻离地。', '自然呼吸保持，然后缓慢放松。'], ['视线朝下，颈部不后仰。', '只做小幅上背抬起。'], ['过度抬胸导致腰部挤压。', '屏息或耸肩。'], ['cobra']),
+  exercise('dumbbell-bent-over-row', '哑铃俯身划船', ['双臂哑铃划船', 'dumbbell bent over row', 'bent over dumbbell row'], 'dumbbells', 'back', ['背阔肌', '菱形肌', '肱二头肌'], 'intermediate', false,
+    ['双手持哑铃，屈髋前倾，膝盖微屈。', '肘部沿体侧向后拉，让哑铃靠近腰部。', '保持躯干角度，缓慢伸肘下放。'], ['背部自然伸展。', '肩膀远离耳朵。'], ['甩动上身借力。', '弓背或耸肩。'], ['upper', 'rdl']),
+  exercise('dumbbell-single-arm-row', '哑铃单臂划船', ['分腿站姿哑铃单臂划船', '单臂哑铃划船', 'dumbbell single arm row'], 'dumbbells', 'back', ['背阔肌', '菱形肌', '肱二头肌'], 'intermediate', true,
+    ['前后分腿屈髋，空闲手撑在前侧大腿上。', '另一手握哑铃，肘部向后拉近腰部。', '控制放下；换侧，每侧分别计数。'], ['支撑手避开膝盖正面。', '骨盆与胸部尽量朝地面。'], ['转动躯干带起重量。', '拉起时耸肩。'], ['upper', 'rdl']),
+
+  exercise('pike-push-up', '折刀俯卧撑', ['派克俯卧撑', 'pike push up', 'pike push-up'], 'bodyweight', 'shoulders', ['三角肌前束', '肱三头肌', '斜方肌'], 'intermediate', false,
+    ['双手撑地，抬高臀部成倒V形。', '屈肘，让头部向双手前方的地面缓慢靠近。', '在头部触地前推回起始位置。'], ['先具备稳定的推举与支撑能力。', '范围以肩腕舒适且可控为准。'], ['头部承重。', '下降过快或腰部塌陷。'], ['nasm']),
+  exercise('dumbbell-overhead-press', '哑铃肩上推举', ['哑铃推肩', '站姿哑铃推举', 'dumbbell overhead press', 'dumbbell shoulder press'], 'dumbbells', 'shoulders', ['三角肌前束', '三角肌中束', '肱三头肌'], 'intermediate', false,
+    ['站稳，将哑铃举到肩部两侧，前臂竖直。', '收紧腹部，平稳向头顶上方推起。', '缓慢下放到肩高。'], ['肋骨不过度上翻。', '手肘略位于躯干前方。'], ['后仰借力。', '重量过大导致手腕后折。'], ['upper', 'technique']),
+  exercise('dumbbell-arnold-press', '哑铃阿诺德推举', ['阿诺德推举', 'dumbbell arnold press', 'arnold press'], 'dumbbells', 'shoulders', ['三角肌前束', '三角肌中束', '肱三头肌'], 'intermediate', false,
+    ['持轻哑铃于肩前，掌心朝自己。', '上推时缓慢向外旋转，掌心逐渐朝前。', '沿原路径下降并转回起点。'], ['旋转范围以肩部舒适为准。', '先掌握普通哑铃推举。'], ['在顶端突然旋转手臂。', '后仰挺腰借力。'], ['upper', 'technique']),
+  exercise('dumbbell-lateral-raise', '哑铃侧平举', ['侧平举哑铃', 'dumbbell lateral raise'], 'dumbbells', 'shoulders', ['三角肌中束', '冈上肌'], 'beginner', false,
+    ['双手持轻哑铃置于体侧，肘部微屈。', '手臂向侧前方抬起，最高不超过肩高。', '控制速度缓慢放回。'], ['拇指自然朝前或略朝上。', '肩膀保持放松，不耸起。'], ['用身体摆动甩起哑铃。', '手臂明显内旋倒水。'], ['upper', 'technique']),
+  exercise('dumbbell-front-raise', '哑铃前平举', ['双臂哑铃前平举', 'dumbbell front raise'], 'dumbbells', 'shoulders', ['三角肌前束', '胸大肌上部'], 'beginner', false,
+    ['双手持轻哑铃放在大腿前方。', '肘部微屈，将哑铃向前抬到肩高以内。', '缓慢放回起点。'], ['腹部轻收，身体保持直立。', '手腕与前臂成线。'], ['后仰借力。', '哑铃抬得过高。'], ['upper', 'technique']),
+  exercise('dumbbell-reverse-fly', '哑铃俯身反向飞鸟', ['哑铃反向飞鸟', '俯身哑铃飞鸟', 'dumbbell reverse fly'], 'dumbbells', 'shoulders', ['三角肌后束', '菱形肌', '斜方肌'], 'intermediate', false,
+    ['持轻哑铃，屈髋前倾并保持背部稳定。', '肘部微屈，手臂向两侧展开。', '在肩部舒适范围内停顿，缓慢收回。'], ['躯干角度保持不变。', '优先控制肩胛，不追求重量。'], ['甩动哑铃。', '耸肩或抬头。'], ['upper', 'technique']),
+
+  exercise('dumbbell-biceps-curl', '哑铃弯举', ['哑铃肱二头肌弯举', '双臂哑铃弯举', 'dumbbell biceps curl', 'dumbbell curl'], 'dumbbells', 'arms', ['肱二头肌', '肱肌'], 'beginner', false,
+    ['站直，掌心朝前，哑铃置于体侧。', '上臂靠近身体，屈肘抬起哑铃。', '保持上臂稳定，缓慢放下。'], ['手腕保持中立。', '呼气弯举，吸气下降。'], ['甩腰借力。', '肘部不断向前移动。'], ['biceps', 'arms']),
+  exercise('dumbbell-hammer-curl', '哑铃锤式弯举', ['哑铃锤举', '锤式弯举', 'dumbbell hammer curl', 'hammer curl'], 'dumbbells', 'arms', ['肱肌', '肱桡肌', '肱二头肌'], 'beginner', false,
+    ['双手持哑铃，掌心相对。', '上臂固定在体侧，屈肘举起。', '保持对握，缓慢下降。'], ['拇指方向始终向上。', '选择能稳稳放下的重量。'], ['身体摇晃。', '手腕弯曲借力。'], ['arms', 'biceps']),
+  exercise('dumbbell-alternating-curl', '哑铃交替弯举', ['交替哑铃弯举', 'dumbbell alternating curl', 'alternating dumbbell curl'], 'dumbbells', 'arms', ['肱二头肌', '肱肌'], 'beginner', true,
+    ['双手持哑铃站直，掌心朝前。', '一侧屈肘举起，另一侧保持自然下垂。', '缓慢放下后换手，每侧分别计数。'], ['两侧保持相同的控制速度。', '肩膀与躯干保持稳定。'], ['扭转身体帮助抬举。', '还未放稳就抢着换手。'], ['biceps', 'arms']),
+  exercise('dumbbell-cross-body-hammer-curl', '哑铃交叉锤式弯举', ['交叉锤式弯举', 'dumbbell cross body hammer curl'], 'dumbbells', 'arms', ['肱肌', '肱桡肌', '肱二头肌'], 'intermediate', true,
+    ['双手对握哑铃，自然垂于体侧。', '一手屈肘，向对侧胸前斜向抬起。', '缓慢放回后换手，每侧分别计数。'], ['上臂移动幅度保持较小。', '手腕不要向内折。'], ['肩部扭转带动重量。', '哑铃撞向胸口。'], ['arms', 'biceps']),
+  exercise('dumbbell-overhead-triceps-extension', '哑铃颈后臂屈伸', ['双手哑铃过顶臂屈伸', 'dumbbell overhead triceps extension'], 'dumbbells', 'arms', ['肱三头肌', '腹肌'], 'intermediate', false,
+    ['双手稳握一只轻哑铃，举至头顶。', '上臂尽量固定，屈肘将哑铃缓慢降至头后。', '伸肘推回，避免猛烈锁死。'], ['仅使用能牢固抓握的哑铃。', '肋骨收住，肩部无痛。'], ['挺腰借力。', '重量过大导致肘部散开。'], ['arms', 'technique']),
+  exercise('dumbbell-triceps-kickback', '哑铃俯身臂屈伸', ['哑铃后踢臂屈伸', '哑铃肱三头肌后伸', 'dumbbell triceps kickback'], 'dumbbells', 'arms', ['肱三头肌', '三角肌后束'], 'beginner', false,
+    ['双手持轻哑铃，屈髋前倾，上臂贴近躯干。', '上臂保持不动，向后伸直肘部。', '缓慢屈肘回到起始位置。'], ['用较轻重量保持控制。', '背部稳定，视线朝地面。'], ['来回甩动整个上臂。', '弓背或耸肩。'], ['arms', 'upper']),
+  exercise('dumbbell-floor-triceps-extension', '哑铃仰卧臂屈伸', ['哑铃地板臂屈伸', 'dumbbell floor triceps extension', 'lying dumbbell triceps extension'], 'dumbbells', 'arms', ['肱三头肌', '三角肌前束'], 'intermediate', false,
+    ['仰卧屈膝，双手对握轻哑铃，手臂朝上。', '上臂尽量固定，屈肘将哑铃降向头部两侧。', '伸肘回到起点，保持握持稳定。'], ['哑铃沿头侧移动，避开面部。', '使用能全程控制的轻重量。'], ['哑铃下降过快。', '手腕后折或上臂大幅晃动。'], ['arms', 'technique']),
+
+  exercise('forearm-plank', '前臂平板支撑', ['平板支撑', '肘撑平板', 'forearm plank', 'plank'], 'bodyweight', 'core', ['腹横肌', '腹直肌', '臀大肌'], 'beginner', false,
+    ['双肘置于肩下，前臂撑地。', '双腿向后伸展，脚尖支撑，身体成一直线。', '自然呼吸保持，失去姿势前放下膝盖。'], ['轻收腹部与臀部。', '先用能保持姿势的短时长。'], ['塌腰或抬臀过高。', '屏住呼吸。'], ['plank']),
+  exercise('high-plank', '高位平板支撑', ['直臂平板支撑', 'high plank', 'straight arm plank'], 'bodyweight', 'core', ['腹横肌', '腹直肌', '前锯肌'], 'beginner', false,
+    ['双手置于肩下撑地。', '双腿后伸，头到脚跟大致成线。', '推稳地面并自然呼吸，结束时放下膝盖。'], ['手掌均匀承重。', '肩胛保持稳定，胸口不下沉。'], ['腰部下塌。', '身体重量压在手腕前侧。'], ['plank', 'push']),
+  exercise('knee-plank', '跪姿平板支撑', ['跪姿前臂平板支撑', '跪式平板支撑', 'knee plank'], 'bodyweight', 'core', ['腹横肌', '腹直肌', '前锯肌'], 'beginner', false,
+    ['双肘位于肩下，双膝着地。', '膝盖略向后移，肩、髋、膝保持一线。', '收腹并自然呼吸保持，然后放松。'], ['臀部不向后坐。', '先建立稳定支撑再延长时长。'], ['塌腰。', '屏息硬撑。'], ['plank']),
+  exercise('side-plank', '侧平板支撑', ['侧桥', '侧向平板支撑', 'side plank'], 'bodyweight', 'core', ['腹斜肌', '臀中肌', '腹横肌'], 'intermediate', true,
+    ['侧卧，前臂撑地，手肘在肩下。', '双腿伸直，抬髋让肩、髋、脚踝成线。', '自然呼吸保持后放下；每侧分别计时。'], ['肩膀远离耳朵。', '难以保持时改用跪姿侧平板。'], ['髋部下坠。', '躯干向前或向后翻转。'], ['plank', 'nasm']),
+  exercise('knee-side-plank', '跪姿侧平板支撑', ['屈膝侧平板支撑', '跪姿侧桥', 'knee side plank', 'modified side plank'], 'bodyweight', 'core', ['腹斜肌', '臀中肌', '腹横肌'], 'beginner', true,
+    ['侧卧屈膝，前臂支撑且肘在肩下。', '用前臂和膝盖支撑，抬起髋部。', '肩髋膝成线，保持后放下；每侧分别计时。'], ['骨盆上下叠放。', '保持轻松、连续的呼吸。'], ['肩部耸起。', '髋部向后折。'], ['plank']),
+  exercise('dead-bug', '死虫式', ['死虫', 'dead bug'], 'bodyweight', 'core', ['腹横肌', '腹直肌'], 'beginner', true,
+    ['仰卧，双臂朝上，髋膝屈曲约90度。', '缓慢伸展一侧腿及对侧手臂。', '腰背稳定后收回并换侧，每侧分别计数。'], ['只伸到腰部不离地拱起的位置。', '保持呼吸，不必把手脚降到底。'], ['腿伸太低导致腰部反弓。', '动作过快。'], ['stability']),
+  exercise('bird-dog', '鸟狗式', ['鸟犬式', 'bird dog', 'bird-dog'], 'bodyweight', 'core', ['腹横肌', '竖脊肌', '臀大肌'], 'beginner', true,
+    ['四点跪姿，双手在肩下、双膝在髋下。', '一手向前伸、对侧腿向后伸。', '保持骨盆稳定后收回换侧，每侧分别计数。'], ['向远处延伸，不追求抬高。', '保持背部自然平直。'], ['骨盆旋转。', '抬腿过高导致塌腰。'], ['stability']),
+  exercise('heel-tap', '仰卧交替脚跟点地', ['仰卧脚跟点地', '死虫式脚跟点地', 'supine heel tap', 'heel tap'], 'bodyweight', 'core', ['腹横肌', '腹直肌'], 'beginner', true,
+    ['仰卧抬腿，髋膝屈曲约90度。', '一腿保持屈膝，缓慢下降至脚跟轻触地面。', '收回后换腿，每侧分别计数。'], ['腰背保持稳定。', '点地距离以不挺腰为限。'], ['腿快速砸下。', '腰部拱起。'], ['stability']),
+  exercise('reverse-crunch', '反向卷腹', ['仰卧反向卷腹', 'reverse crunch'], 'bodyweight', 'core', ['腹直肌', '腹斜肌'], 'intermediate', false,
+    ['仰卧，双腿抬起并屈膝，双手放体侧。', '腹部发力，让骨盆轻轻卷离地面。', '缓慢落回骨盆，不靠甩腿重复。'], ['动作幅度保持较小。', '上背和头部放松贴地。'], ['用腿部摆动带起臀部。', '落下时腰部反弓。'], ['abs']),
+  exercise('crunch', '卷腹', ['基础卷腹', 'abdominal crunch', 'crunch'], 'bodyweight', 'core', ['腹直肌', '腹斜肌'], 'beginner', false,
+    ['仰卧屈膝，双手交叉放胸前。', '呼气，缓慢卷起肩胛上部。', '控制回落，不必坐起。'], ['下巴与胸口保持一点间距。', '幅度小，注意腹部收缩。'], ['用头颈向前探。', '借反弹快速起落。'], ['abs']),
+  exercise('bicycle-crunch', '自行车卷腹', ['空中自行车卷腹', 'bicycle crunch'], 'bodyweight', 'core', ['腹斜肌', '腹直肌'], 'intermediate', true,
+    ['仰卧，双手轻放头侧，双腿抬起。', '转动上背，让一侧肩靠近对侧屈起的膝。', '缓慢换边，另一腿向前伸，每侧分别计数。'], ['腰部保持稳定，伸腿高度可调高。', '手只轻托头部。'], ['拉扯颈部。', '快速踩腿而躯干不受控制。'], ['abs', 'upper']),
+  exercise('seated-russian-twist', '坐姿俄罗斯转体', ['徒手俄罗斯转体', '俄罗斯转体', 'seated russian twist', 'bodyweight russian twist'], 'bodyweight', 'core', ['腹斜肌', '腹直肌'], 'intermediate', true,
+    ['坐姿屈膝，双脚保持踩地，背部伸展。', '躯干轻微后倾，双手置于胸前。', '上背小幅左右转动，每侧分别计数。'], ['双脚踩地降低难度。', '缓慢转动，避免追求大幅度。'], ['弓背快速甩动。', '只甩手而不控制躯干。'], ['stability', 'technique']),
+  exercise('lying-leg-raise', '仰卧举腿', ['仰卧抬腿', 'lying leg raise'], 'bodyweight', 'core', ['腹直肌', '髂腰肌'], 'intermediate', false,
+    ['仰卧，双手放体侧，双腿抬至舒适高位。', '膝盖可微屈，缓慢降低双腿。', '在腰部将要拱起前停下，再抬回。'], ['下降深度由腰背稳定性决定。', '难以控制时改做脚跟点地。'], ['为了贴地而反弓腰部。', '快速摆腿。'], ['stability', 'technique']),
+  exercise('plank-shoulder-tap', '平板支撑触肩', ['高位平板触肩', '交替触肩', 'plank shoulder tap'], 'bodyweight', 'core', ['腹横肌', '腹斜肌', '前锯肌'], 'intermediate', true,
+    ['高位平板支撑，双脚略宽于髋。', '一手短暂离地，轻触对侧肩膀。', '放回手掌后换侧，每侧分别计数。'], ['骨盆尽量不左右摆动。', '速度慢，先稳住再抬手。'], ['扭转躯干。', '支撑肩下沉。'], ['plank', 'stability']),
+  exercise('bear-hold', '熊式悬膝支撑', ['熊式支撑', '熊爬静态保持', 'bear hold', 'bear plank'], 'bodyweight', 'core', ['腹横肌', '股四头肌', '前锯肌'], 'intermediate', false,
+    ['四点跪姿，双手在肩下，脚尖撑地。', '收腹，将双膝抬离地面少许。', '背部稳定并自然呼吸，结束后轻放膝盖。'], ['膝盖只需离地几厘米。', '肩胛稳定，不让胸口下沉。'], ['臀部抬得过高。', '屏息或腰部塌陷。'], ['plank', 'stability']),
+  exercise('dumbbell-suitcase-march', '哑铃单侧提重踏步', ['哑铃手提箱踏步', 'dumbbell suitcase march'], 'dumbbells', 'core', ['腹斜肌', '腹横肌', '臀中肌'], 'intermediate', true,
+    ['一手握哑铃自然垂于体侧。', '保持身体直立，双腿缓慢交替原地踏步。', '结束后换手持重，每侧分别计时。'], ['躯干不向哑铃一侧倾斜。', '抬膝高度以平衡为准。'], ['耸肩提起重量。', '身体左右摇摆。'], ['stability', 'technique']),
+
+  exercise('march-in-place', '原地踏步', ['原地走', 'march in place', 'marching in place'], 'bodyweight', 'fullbody', ['髂腰肌', '股四头肌', '臀中肌'], 'beginner', true,
+    ['站直，双脚约髋宽。', '交替抬起双脚，手臂自然摆动。', '双脚轮流轻放回地面；若按次数练习，每侧分别计数。'], ['以能轻松说话的节奏开始。', '抬膝无需过高。'], ['落脚过重。', '后仰或耸肩。'], ['cardio'], { purpose: 'cardio' }),
+  exercise('step-jack', '无跳跃开合步', ['低冲击开合步', '踏步开合', 'step jack', 'low impact jumping jack'], 'bodyweight', 'fullbody', ['臀中肌', '股四头肌', '三角肌'], 'beginner', true,
+    ['双脚靠近站立，双臂自然下垂。', '一脚向侧面迈出，同时双臂向两侧抬起。', '收回后换脚，每侧分别计数；保持一脚始终着地。'], ['手臂抬到肩部舒适的高度。', '左右交替，落脚轻柔。'], ['为了速度扭动膝盖。', '把踏步变成跳跃。'], ['cardio', 'nasm'], { purpose: 'cardio' }),
+  exercise('jumping-jack', '开合跳', ['标准开合跳', 'jumping jack', 'jumping jacks'], 'bodyweight', 'fullbody', ['股四头肌', '小腿肌群', '三角肌'], 'intermediate', false,
+    ['双脚靠近站立，双臂放体侧。', '轻跳打开双脚，同时抬臂。', '轻跳合拢双脚，双臂放回。'], ['屈膝缓冲，落地尽量安静。', '不适合跳跃时改做开合步。'], ['膝盖僵直落地。', '疲劳时继续快速跳跃。'], ['nasm'], { purpose: 'cardio' }),
+  exercise('high-knees', '原地高抬腿跑', ['高抬腿跑', '高抬腿', 'high knees'], 'bodyweight', 'fullbody', ['髂腰肌', '股四头肌', '小腿肌群'], 'intermediate', true,
+    ['站直，手臂弯曲在体侧。', '以小步跑交替抬膝，脚掌轻落。', '若按次数练习，每侧分别计数；逐渐减速结束。'], ['膝盖高度以身体稳定为准。', '需要低冲击版本时改为原地踏步。'], ['后仰抬膝。', '落地过重。'], ['cardio'], { purpose: 'cardio' }),
+  exercise('mountain-climber', '登山跑', ['登山者', 'mountain climber', 'mountain climbers'], 'bodyweight', 'fullbody', ['腹横肌', '髂腰肌', '前锯肌'], 'intermediate', true,
+    ['双手在肩下，进入高位平板支撑。', '一膝向胸前收，再将脚放回。', '交替换腿，先慢速完成，每侧分别计数。'], ['肩膀稳定在手掌上方。', '骨盆避免上下跳动。'], ['腰部塌陷。', '为追求速度缩短控制过程。'], ['plank', 'cardio'], { purpose: 'cardio' }),
+  exercise('standing-knee-to-elbow', '站姿对侧提膝触肘', ['站姿交叉提膝', 'standing knee to elbow'], 'bodyweight', 'fullbody', ['腹斜肌', '髂腰肌', '臀中肌'], 'beginner', true,
+    ['站直，双手轻放头侧。', '抬起一侧膝盖，同时上背轻转向该侧。', '对侧肘向膝靠近后回位；每侧分别计数。'], ['肘膝不必真的碰到。', '抬膝缓慢，站稳再换边。'], ['用手拉头。', '单脚支撑时身体摇晃。'], ['cardio', 'stability'], { purpose: 'cardio' }),
+
+  exercise('cat-cow', '猫牛式', ['猫牛伸展', 'cat cow', 'cat-cow'], 'bodyweight', 'mobility', ['竖脊肌', '腹肌'], 'beginner', false,
+    ['四点跪姿，手在肩下、膝在髋下。', '呼气轻轻拱背，头部自然跟随。', '吸气缓慢回到轻微伸展，循环进行。'], ['用舒适小幅度活动脊柱。', '动作与呼吸配合。'], ['猛地抬头或过度塌腰。', '在疼痛范围里反复拉伸。'], ['back'], { purpose: 'mobility' }),
+  exercise('child-pose', '婴儿式', ['儿童式', 'child pose', "child's pose", 'childs pose'], 'bodyweight', 'mobility', ['背阔肌', '竖脊肌', '臀大肌'], 'beginner', false,
+    ['跪坐，双膝按舒适距离分开。', '臀部向脚跟方向移动，手臂向前伸。', '在舒适位置自然呼吸，再慢慢起身。'], ['臀部不必碰到脚跟。', '膝部不适时减小屈膝幅度。'], ['强压臀部向下。', '屏息追求更深的拉伸。'], ['stability', 'nasm'], { purpose: 'mobility' }),
+  exercise('thoracic-rotation', '四点跪姿胸椎旋转', ['跪姿胸椎旋转', 'quadruped thoracic rotation', 'thoracic rotation'], 'bodyweight', 'mobility', ['胸椎周围肌群', '腹斜肌', '胸大肌'], 'beginner', true,
+    ['四点跪姿，一手轻放头后。', '让该侧肘部向外上方打开，转动上背。', '缓慢回到起点；换侧，每侧分别计数。'], ['骨盆尽量保持朝向地面。', '颈部随上背自然转动。'], ['用腰部扭转代替上背活动。', '手拉头部增加幅度。'], ['thoracic'], { purpose: 'mobility' }),
+  exercise('half-kneeling-hip-flexor-stretch', '半跪姿髋屈肌拉伸', ['跪姿髋屈肌拉伸', 'half kneeling hip flexor stretch'], 'bodyweight', 'mobility', ['髂腰肌', '股直肌'], 'beginner', true,
+    ['一膝跪地，另一脚放在前方，膝下可垫软垫。', '收腹并轻收臀，骨盆整体小幅向前移。', '后侧髋前方有轻拉伸感后保持；每侧分别计时。'], ['腰部保持自然，不向后弓。', '只拉到轻微张力，不追求疼痛。'], ['挺腰代替伸髋。', '向前冲得过远。'], ['stretch'], { purpose: 'mobility' }),
+  exercise('standing-calf-stretch', '扶墙小腿拉伸', ['站姿小腿拉伸', '靠墙小腿拉伸', 'standing calf stretch'], 'bodyweight', 'mobility', ['腓肠肌', '比目鱼肌'], 'beginner', true,
+    ['双手扶墙，前后分腿站立。', '后脚跟保持着地，前膝弯曲，身体缓慢前移。', '后侧小腿有轻拉伸感时保持；每侧分别计时。'], ['后脚脚尖朝前。', '保持均匀呼吸。'], ['后脚跟抬起。', '弹震式前后晃动。'], ['stretch'], { support: 'wall', purpose: 'mobility' }),
+  exercise('supine-hamstring-stretch', '仰卧大腿后侧拉伸', ['仰卧腘绳肌拉伸', 'supine hamstring stretch'], 'bodyweight', 'mobility', ['股二头肌', '半腱肌'], 'beginner', true,
+    ['仰卧，一脚踩地，双手扶住另一侧大腿后方。', '抬起的膝盖缓慢伸展，直到大腿后侧轻微牵拉。', '保持自然呼吸，放下后换腿；每侧分别计时。'], ['膝盖可以保持微屈。', '肩颈放松，不拉扯膝关节。'], ['强行把腿拉直。', '拉伸到麻木或疼痛。'], ['stretch'], { purpose: 'mobility' }),
+]);
+
+// Exact lookup only: normalizing spelling separators must never turn a generic
+// category (e.g. "划船") or an unknown variation into a different exercise.
+export function normalizeExerciseName(value) {
+  return typeof value === 'string' ? value.normalize('NFKC').trim().toLowerCase().replace(/[\s\-‐‑‒–—]+/g, '') : '';
+}
+export const catalogById = new Map(exerciseCatalog.map(item => [item.id, item]));
+const catalogByName = new Map();
+for (const item of exerciseCatalog) {
+  for (const label of [item.id, item.name, ...item.aliases]) {
+    const key = normalizeExerciseName(label);
+    const previous = catalogByName.get(key);
+    if (previous && previous !== item) throw new Error(`Duplicate exercise alias: ${label}`);
+    catalogByName.set(key, item);
+  }
+}
+export function findCatalogExercise(nameOrId) {
+  return catalogByName.get(normalizeExerciseName(nameOrId)) || null;
+}

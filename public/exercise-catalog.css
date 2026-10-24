@@ -1,0 +1,143 @@
+/* One reference library, shared by browsing and the user's actual plan. */
+.main-nav:has(> a:nth-child(4):last-child) { --indicator-count: 4; }
+.main-nav:has(> :nth-child(4)[aria-current=page]) { --indicator-index: 3; }
+.main-nav a { white-space: nowrap; }
+.welcome-library { margin: 12px auto 0; color: var(--accent-ink); }
+.library-page { max-width: 1040px; }
+.library-heading { margin-bottom: 28px; }
+.library-heading h1 { display: flex; align-items: center; gap: 16px; }
+.library-heading .page-description { max-width: 650px; }
+.catalog-count { display: inline-grid; place-items: center; min-width: 44px; padding: 4px 12px; border-radius: 100px; background: var(--surface-muted); color: var(--muted); font-size: 15px; font-weight: 500; letter-spacing: 0; }
+.library-filters { padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: #fafafa; }
+.catalog-search input { background: var(--surface); }
+.catalog-filter-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+.catalog-filter-row .field { gap: 7px; font-size: 13px; color: var(--muted); }
+.catalog-filter-row select { background-color: var(--surface); color: var(--ink); font-size: 15px; }
+.catalog-results-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; min-height: 44px; margin: 24px 0 12px; }
+.catalog-results-heading p { font-size: 14px; color: var(--muted); }
+.catalog-results-heading .text-button { min-height: 44px; }
+.catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.catalog-card { display: block; width: 100%; min-width: 0; padding: 0; overflow: hidden; text-align: left; border: 1px solid var(--line); border-radius: 22px; background: white; transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.catalog-poster { display: block; position: relative; background: #f6f9fd; aspect-ratio: 720 / 560; border-bottom: 1px solid var(--line); }
+.exercise-poster-image { display: block; max-width: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.catalog-poster > .exercise-poster-image { width: 100%; height: 100%; }
+.catalog-animation-badge { display: inline-flex; align-items: center; gap: 8px; position: absolute; right: 14px; bottom: 12px; padding: 4px 9px; border-radius: 100px; color: #515968; background: rgb(255 255 255 / 90%); font-size: 11px; }
+.catalog-animation-badge > span { font-size: 15px; }
+.catalog-card-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px; }
+.catalog-card-category { font-size: 12px; color: var(--muted); }
+.catalog-card-copy strong { font-size: 18px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.catalog-card-muscles { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.catalog-equipment { display: inline-block; padding: 3px 9px; border-radius: 7px; font-size: 12px; color: var(--ink); background: var(--surface-muted); }
+.catalog-card:active { transform: scale(.985); }
+@media (hover: hover) and (pointer: fine) {
+  .catalog-card:hover { border-color: var(--accent-line); box-shadow: 0 8px 24px rgb(29 29 31 / 6%); transform: translateY(-3px); }
+  .catalog-card:hover .catalog-animation-badge { color: var(--accent-ink); }
+  .catalog-card:active { transform: scale(.985); }
+}
+.catalog-more { display: flex; justify-content: center; margin-top: 28px; }
+.catalog-library-note { padding: 22px 0 0; margin-top: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 720px; }
+.catalog-empty { grid-column: 1 / -1; text-align: center; padding: 48px 24px; border-radius: 22px; background: var(--surface-muted); }
+.catalog-empty h2 { font-size: 22px; }
+.catalog-empty p { color: var(--muted); margin-top: 12px; }
+.catalog-empty button { margin-top: 22px; }
+.library-detail-heading { margin: 22px 0 30px; }
+.library-detail-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 38px; align-items: start; }
+.library-demo-panel { min-width: 0; }
+.demo-context, .demo-requirement { font-size: 13px; color: var(--muted); line-height: 1.8; margin-top: 14px; }
+.demo-requirement { color: var(--ink); }
+.library-instructions { min-width: 0; }
+.library-instructions h2 { font-size: 19px; margin-bottom: 15px; }
+.instruction-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 17px; }
+.instruction-steps li { display: flex; gap: 12px; align-items: baseline; }
+.instruction-steps li > span { display: grid; place-items: center; width: 25px; height: 25px; flex: 0 0 auto; border-radius: 50%; background: var(--surface-muted); color: var(--muted); font-size: 12px; }
+.instruction-steps p { font-size: 15px; line-height: 1.85; }
+.catalog-cues, .catalog-pitfalls { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.catalog-cues .detail-list { color: var(--ink); }
+.library-bottom-note { margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); line-height: 1.8; }
+.library-bottom-note .subtle-details { border: 0; margin-top: 4px; }
+.library-bottom-note a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+.exercise-thumbnail svg { display: block; width: 100%; height: 100%; }
+.catalog-plan-guide .helper { margin-top: 16px; }
+.catalog-plan-guide .subtle-details { margin-top: 10px; }
+.exercise-demo-host { min-width: 0; }
+
+/* The player's controls remain available without hover or continuous animation. */
+.exercise-player { overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #f6f8fb; }
+.exercise-stage { position: relative; width: 100%; padding: 16px; }
+.exercise-stage > svg { display: block; width: 100%; height: auto; max-height: 390px; }
+.exercise-stage > .exercise-poster-image { width: 100%; height: auto; max-height: 390px; }
+.animation-controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 14px 16px; background: white; border-top: 1px solid var(--line); }
+.animation-controls button { min-height: 44px; min-width: 44px; padding: 9px 15px; border: 0; border-radius: 100px; color: var(--ink); background: var(--surface-muted); font-size: 14px; }
+.animation-controls button[data-animation="play"] { color: white; background: var(--accent); }
+.animation-controls button:disabled { opacity: .45; }
+.animation-phase, .animation-status { color: var(--muted); font-size: 13px; line-height: 1.7; text-align: center; padding: 0 16px 14px; background: white; }
+.animation-phase { color: var(--ink); font-weight: 500; }
+
+/* Camera controls are separate from movement controls: look around, then learn the motion. */
+.animation-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 20px 0; min-height: 45px; }
+.animation-mode { color: var(--accent-ink); font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+.animation-drag-hint { color: var(--muted); font-size: 11px; }
+.exercise-stage.is-3d { height: clamp(300px, 48vw, 420px); padding: 0; }
+.exercise-stage.is-3d canvas { display: block; width: 100%; height: 100%; cursor: grab; border-radius: 12px; }
+.exercise-stage.is-3d canvas:active { cursor: grabbing; }
+.exercise-stage.is-3d canvas:focus-visible { outline: 3px solid var(--accent); outline-offset: -5px; }
+.animation-views { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 4px 18px 17px; }
+.animation-view-options { display: flex; padding: 3px; border: 1px solid #e4e9f0; border-radius: 100px; background: #edf1f7; }
+.animation-view-options button { min-width: 46px; min-height: 38px; padding: 8px 12px; border: 0; border-radius: 100px; color: #687387; background: transparent; font-size: 12px; transition: background .18s ease, color .18s ease; }
+.animation-view-options button[aria-pressed="true"] { color: var(--accent-ink); background: #fff; box-shadow: 0 2px 6px #2439550d; }
+.animation-zoom { display: flex; gap: 4px; }
+.animation-zoom button { display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid #e4e9f0; border-radius: 50%; background: #fff; color: #536279; font-size: 18px; }
+.animation-controls button[data-animation="speed"] { min-width: 44px; padding-inline: 10px; color: var(--muted); background: transparent; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) {
+  .animation-toolbar { padding: 15px 13px 0; gap: 6px; }
+  .animation-drag-hint { font-size: 10px; }
+  .animation-views { gap: 5px; padding: 2px 10px 13px; }
+  .animation-view-options button { padding-inline: 9px; min-width: 40px; min-height: 40px; }
+  .animation-zoom button { width: 36px; height: 40px; }
+  .exercise-stage.is-3d { height: 320px; }
+  .exercise-player .animation-controls { gap: 6px; }
+  .exercise-player .animation-controls button { font-size: 12px; padding-inline: 10px; }
+}
+
+@media (max-width: 780px) {
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .library-detail-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .library-demo-panel { max-width: 560px; width: 100%; margin-inline: auto; }
+  .exercise-stage > svg { max-height: 330px; }
+  .exercise-stage > .exercise-poster-image { max-height: 330px; }
+}
+@media (max-width: 520px) {
+  .site-header .brand { width: 88px; }
+  .site-header { gap: 8px; }
+  .main-nav a { min-width: 43px; padding-inline: 9px; font-size: 12px; }
+  .library-heading { margin-bottom: 22px; }
+  .library-heading h1 { gap: 12px; }
+  .catalog-count { font-size: 14px; min-width: 38px; padding-inline: 10px; }
+  .library-filters { padding: 18px; border-radius: 18px; }
+  .catalog-filter-row { gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .catalog-filter-row > .field:last-child { grid-column: 1 / -1; }
+  .catalog-filter-row select { min-height: 46px; }
+  .catalog-results-heading { margin-top: 18px; }
+  .catalog-grid { gap: 12px; }
+  .catalog-card { border-radius: 17px; }
+  .catalog-poster { padding: 5px; aspect-ratio: 1 / 1; }
+  .catalog-animation-badge { right: 7px; bottom: 6px; font-size: 10px; gap: 5px; padding: 2px 6px; }
+  .catalog-card-copy { padding: 13px 12px; gap: 7px; }
+  .catalog-card-copy strong { font-size: 15px; }
+  .catalog-card-category, .catalog-equipment { font-size: 11px; }
+  .catalog-card-muscles { font-size: 12px; }
+  .library-detail-heading { margin-top: 16px; }
+  .library-detail-heading h1 { font-size: 28px; }
+  .library-instructions h2 { font-size: 18px; }
+  .exercise-stage { padding: 10px; }
+  .animation-controls { gap: 8px; padding: 12px; }
+  .animation-controls button { font-size: 13px; padding-inline: 12px; }
+}
+@media (max-width: 360px) {
+  .main-nav a { min-width: 44px; padding-inline: 4px; }
+  .catalog-card-copy strong { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalog-card, .catalog-card:hover, .catalog-card:active { transform: none; transition: none; }
+  .animation-view-options button { transition: none; }
+}

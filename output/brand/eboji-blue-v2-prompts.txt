@@ -1,0 +1,10 @@
+eboji blue v2 — recolor of the existing raster logo and icon
+Generation mode: built-in image_gen image editing, transparent background.
+Website accent requested: #0071E3. Original orange assets are preserved as v1.
+Files: eboji-logo-blue-v2.png; eboji-mark-blue-v2.png.
+
+HORIZONTAL LOGO EDIT PROMPT
+Use case: precise-object-edit. Edit target: the attached original transparent horizontal eboji logo. Perform a color replacement only. Change ONLY the orange stylized e monogram on the left to a clean uniform saturated blue #0071E3, matching the website accent. Preserve the exact monogram silhouette, curves, rounded stroke terminals, shape, size, placement, margins and the entire lowercase 'eboji' wordmark on the right. Keep the wordmark its original dark charcoal #252923; preserve every letter shape and spacing exactly. Preserve the horizontal 3:1 canvas composition and true transparent alpha. This is a minimal brand recolor, not a redesign: no different icon, no font changes, no added decorations, no glow, no shadows, no gradients. Keep antialiased edges crisp and all empty/negative spaces genuinely transparent. Output one horizontal logo asset only.
+
+STANDALONE MARK EDIT PROMPT
+Use case: precise-object-edit. Edit target is the attached existing eboji standalone orange e monogram icon on a transparent square canvas. Perform only a color replacement: change all orange to website blue #0071E3. Preserve the exact original e shape, open-loop silhouette, stroke width, rounded terminals, proportions, position, scale, canvas and transparent background. Keep the same balanced safe margins. Use crisp smooth antialiasing. No redesign, no new symbols, no text, no background fill, no shadow, no gradients. All empty spaces stay genuinely transparent. Output one square transparent blue favicon/app mark, matching this exact original icon.

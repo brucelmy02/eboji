@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="eboji 电子薄肌。制定适合你的训练计划，在每一次反馈中找到自己的节奏。">
+  <title>eboji e薄肌</title>
+  <link rel="icon" href="/brand/eboji-mark-blue-v2.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/motion.css">
+  <link rel="stylesheet" href="/exercise-catalog.css">
+  <link rel="stylesheet" href="/presets.css">
+  <link rel="stylesheet" href="/welcome.css">
+  <link rel="stylesheet" href="/onboarding.css">
+  <link rel="stylesheet" href="/workout-deck.css">
+  <link rel="stylesheet" href="/training-calendar.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#welcome" aria-label="eboji 首页"><img src="/brand/eboji-logo-blue-v2.png" alt="eboji 电子薄肌" width="154" height="58"></a>
+      <nav id="main-nav" class="main-nav" aria-label="主要导航" hidden><a href="#training" data-page="training">训练</a><a href="#library" data-page="library">动作库</a><a href="#records" data-page="records">记录</a><a href="#me" data-page="me">我的</a></nav>
+      <span id="local-badge" class="local-badge">个人体验版</span>
+    </header>
+    <main id="main" tabindex="-1">
+      <div id="global-error" class="error-message" role="alert" hidden></div>
+      <section id="page-loading" class="page loading-page"><span class="spinner" aria-hidden="true"></span><p class="muted">正在打开你的训练空间…</p></section>
+      <section id="page-welcome" class="page welcome-page" hidden>
+        <div class="welcome-hero">
+          <div class="hero-copy">
+            <p class="hero-eyebrow"><span aria-hidden="true"></span>你的 AI 训练伙伴</p>
+            <h1>每次训练，<br><span>都更懂你。</span></h1>
+            <p class="hero-description">从适合你的第一份计划开始。<br>练后聊聊感受，让下一次更合适。</p>
+            <div class="hero-actions"><button type="button" class="primary" data-action="start-setup">定制我的计划 <span aria-hidden="true">↗</span></button><button type="button" class="text-button" data-action="open-presets">先试预设计划 <span aria-hidden="true">→</span></button></div>
+            <p class="hero-usage">AI 定制使用本机 Codex 额度 · 预设无需 AI</p>
+          </div>
+          <div class="hero-product" aria-label="AI 训练体验示例">
+            <div class="demo-stage" id="welcome-demo-stage">
+              <div class="demo-stage-top"><span>为你安排，也随你调整。</span><span class="demo-example-label">体验示例</span></div>
+              <div class="demo-screen" id="welcome-demo-content" aria-live="polite" aria-atomic="true">
+                <div class="demo-panel" data-demo-panel="plan">
+                  <div class="demo-plan-header"><div><p class="demo-kicker">你的第一周</p><h2>全身基础训练</h2></div><span class="demo-spark" aria-hidden="true">✳</span></div>
+                  <div class="demo-plan-meta"><div class="demo-duration"><strong>30</strong><span>分钟 / 次</span></div><p>每周 3 次<br><span>居家 · 徒手 · 新手</span></p></div>
+                  <div class="demo-week" aria-label="示例：周一、周三、周五训练"><span class="is-training">一<i></i></span><span>二<i></i></span><span class="is-training">三<i></i></span><span>四<i></i></span><span class="is-training">五<i></i></span><span>六<i></i></span><span>日<i></i></span></div>
+                  <div class="demo-exercises"><div><span class="demo-exercise-index">01</span><strong>徒手深蹲</strong><span>下肢力量</span></div><div><span class="demo-exercise-index">02</span><strong>跪姿俯卧撑</strong><span>上肢力量</span></div><div><span class="demo-exercise-index">03</span><strong>死虫式</strong><span>核心稳定</span></div></div>
+                  <p class="demo-plan-note"><span aria-hidden="true">↗</span> 从基础动作开始，把恢复日也安排好。</p>
+                </div>
+                <div class="demo-panel" data-demo-panel="feedback" hidden>
+                  <p class="demo-kicker">一次训练之后</p><h2>你的感受，<br>是下一步的线索。</h2>
+                  <div class="demo-message demo-message-user"><span>你</span><p>今天俯卧撑最后一组有点吃力，做了 6 次就停了。</p></div>
+                  <div class="demo-message demo-message-ai"><span>eboji AI</span><p>先了解得更具体一点：是单纯疲劳，还是伴有疼痛或其他不适？</p></div>
+                  <p class="demo-context">结合本次动作和你的反馈，继续了解情况。</p>
+                </div>
+                <div class="demo-panel" data-demo-panel="adjust" hidden>
+                  <p class="demo-kicker">根据反馈，调整下一次</p><h2>小一点的调整。<br><span>更适合你的节奏。</span></h2>
+                  <p class="demo-adjust-context">示例：确认没有疼痛，只是末组疲劳后</p>
+                  <div class="demo-adjustment"><p>跪姿俯卧撑 · 组数</p><div><span class="demo-before">3 <small>组</small></span><span class="demo-change-arrow" aria-hidden="true">→</span><strong>2 <small>组</small></strong></div><p>先减少一组，再观察完成情况。</p></div>
+                  <div class="demo-review-note"><span aria-hidden="true">✓</span><p><strong>由你决定是否采用</strong><span>先看建议和原因，再更新训练计划。</span></p></div>
+                </div>
+              </div>
+              <div class="demo-floating-note" aria-hidden="true"><span>✦</span><div><strong>每个起点，都值得被认真对待。</strong><p>目标、经验、时间，一起考虑。</p></div></div>
+            </div>
+            <div class="demo-controls" role="group" aria-label="切换训练体验示例"><button type="button" data-action="preview-experience" data-preview="plan" aria-pressed="true" aria-controls="welcome-demo-content"><span>01</span> 看计划</button><button type="button" data-action="preview-experience" data-preview="feedback" aria-pressed="false" aria-controls="welcome-demo-content"><span>02</span> 聊反馈</button><button type="button" data-action="preview-experience" data-preview="adjust" aria-pressed="false" aria-controls="welcome-demo-content"><span>03</span> 看调整</button></div>
+            <p class="demo-disclaimer">点击切换，看看训练如何继续。以上为演示，不消耗 AI 额度。</p>
+          </div>
+        </div>
+        <section class="welcome-principles" aria-labelledby="welcome-principles-title"><div class="principles-heading"><p class="hero-eyebrow">循序渐进，也因你而变</p><h2 id="welcome-principles-title">陪你开始。<br>也陪你找到节奏。</h2></div><div class="principle"><span>01 / 了解你</span><h3>从你的生活出发。</h3><p>结合目标、经验和可用时间，安排真正做得到的训练。</p></div><div class="principle"><span>02 / 听你说</span><h3>感受也值得记录。</h3><p>练得轻松还是吃力，把实际体验带进下一次建议。</p></div><div class="principle"><span>03 / 一起调整</span><h3>每一步都有原因。</h3><p>看懂 AI 为什么建议调整，再决定是否更新计划。</p></div></section>
+        <div class="welcome-library-band"><div><span class="library-band-number">80</span><span class="library-band-unit">个居家动作</span></div><p>徒手与哑铃，覆盖全身。<br>先看步骤，再用 3D 示范看清动作。</p><button type="button" class="text-button" data-action="open-library">探索动作库 <span aria-hidden="true">↗</span></button></div>
+        <div class="welcome-bottom"><span>按你的节奏，慢慢变强。</span><button type="button" class="text-button" data-action="check-connection">检查本机 AI 连接 <span aria-hidden="true">↗</span></button></div>
+      </section>
+      <section id="page-setup" class="page setup-page" hidden>
+        <div class="page-topline"><button type="button" class="text-button back-link" data-action="exit-setup">← 暂时返回</button><button type="button" class="text-button" id="fill-example">试填示例</button></div>
+        <div class="setup-layout">
+        <aside class="setup-intro"><p class="setup-intro-label">为你定制 · 从这里开始</p><h2>先了解你。<br>再一起变强。</h2><p class="setup-intro-copy">三个小步骤，让第一份计划<br>更贴近你的生活。</p><ol class="setup-journey" aria-label="定制计划的三个步骤"><li data-journey-step="1" class="is-current" aria-current="step"><span>01</span><div><strong>你的目标</strong><p>找到想要的改变</p></div></li><li data-journey-step="2"><span>02</span><div><strong>你的起点</strong><p>了解身体与运动限制</p></div></li><li data-journey-step="3"><span>03</span><div><strong>你的节奏</strong><p>留出做得到的时间</p></div></li></ol><p class="setup-intro-footnote">填写过程中不会调用 AI。<br>确认生成时，使用本机 Codex 额度。</p></aside>
+        <div class="setup-form-panel">
+        <div class="step-indicator" aria-label="资料填写进度"><span class="step-item"><span class="step-marker" data-step="1">1</span><span class="step-name">目标</span></span><span class="step-line"></span><span class="step-item"><span class="step-marker" data-step="2">2</span><span class="step-name">身体情况</span></span><span class="step-line"></span><span class="step-item"><span class="step-marker" data-step="3">3</span><span class="step-name">时间安排</span></span></div>
+        <form id="profile-form" novalidate>
+          <fieldset id="profile-fields">
+            <div class="setup-step" data-step="1">
+              <div class="step-header"><p class="step-kicker">第 1 步，共 3 步</p><h1>你想练出什么状态？</h1><p>先选一个最想实现的目标。</p></div>
+              <div class="choice-grid goal-grid" role="group" aria-label="训练目标">
+                <label class="choice-card"><input type="radio" name="goal" value="definition" checked><span class="choice-copy"><strong>更有力量，线条更清晰</strong><small>从基础力量训练开始，循序渐进。</small></span><span class="choice-check" aria-hidden="true"></span></label>
+                <label class="choice-card"><input type="radio" name="goal" value="fitness"><span class="choice-copy"><strong>体能更好，日常更有活力</strong><small>改善体能，找到舒服的运动节奏。</small></span><span class="choice-check" aria-hidden="true"></span></label>
+                <label class="choice-card"><input type="radio" name="goal" value="habit"><span class="choice-copy"><strong>先养成运动习惯</strong><small>从做得到的小步开始，让运动融入生活。</small></span><span class="choice-check" aria-hidden="true"></span></label>
+              </div>
+              <label class="field experience-field">你目前的训练经验<select name="experience"><option value="beginner">刚刚开始，是个新手</option><option value="returning">有一些基础，最近不规律</option><option value="regular">已经在规律训练</option></select></label>
+            </div>
+            <div class="setup-step" data-step="2" hidden>
+              <div class="step-header"><p class="step-kicker">第 2 步，共 3 步</p><h1>了解你的起点。</h1><p>这些信息帮助 AI 把握合适的训练强度。</p></div>
+              <div class="number-grid"><label class="field">年龄<div class="input-with-unit"><input name="age" type="number" min="18" max="80" step="1" placeholder="25" required inputmode="numeric"><span>岁</span></div></label><label class="field">身高<div class="input-with-unit"><input name="height" type="number" min="100" max="230" step="0.1" placeholder="175" required inputmode="decimal"><span>cm</span></div></label><label class="field">体重<div class="input-with-unit"><input name="weight" type="number" min="30" max="250" step="0.1" placeholder="65" required inputmode="decimal"><span>kg</span></div></label></div>
+              <p class="helper">目前适用于 18–80 岁成年人。</p>
+              <p id="sex-label" class="field-label">生理性别 <span class="optional">选填</span></p>
+              <div class="segmented-radio" role="radiogroup" aria-labelledby="sex-label" aria-describedby="sex-hint">
+                <label class="choice-card"><input type="radio" name="sex" value="male"><span class="choice-copy"><strong>男性</strong></span><span class="choice-check" aria-hidden="true"></span></label>
+                <label class="choice-card"><input type="radio" name="sex" value="female"><span class="choice-copy"><strong>女性</strong></span><span class="choice-check" aria-hidden="true"></span></label>
+                <label class="choice-card"><input type="radio" name="sex" value="unspecified" checked><span class="choice-copy"><strong>暂不填写</strong></span><span class="choice-check" aria-hidden="true"></span></label>
+              </div>
+              <p id="sex-hint" class="helper">与训练经验、身体情况一起供 AI 参考，可跳过。</p>
+              <p class="field-label health-label">目前有没有运动限制？</p><div class="choice-grid" role="group" aria-label="运动限制"><label class="choice-card"><input type="radio" name="health" value="none" checked><span class="choice-copy"><strong>没有已知的运动限制</strong></span><span class="choice-check" aria-hidden="true"></span></label><label class="choice-card"><input type="radio" name="health" value="needs_review"><span class="choice-copy"><strong>有疼痛、伤病或医生的限制</strong><small>AI 会优先提醒你确认适合的运动条件。</small></span><span class="choice-check" aria-hidden="true"></span></label></div>
+            </div>
+            <div class="setup-step" data-step="3" hidden>
+              <div class="step-header"><p class="step-kicker">第 3 步，共 3 步</p><h1>给训练留一点时间。</h1><p>选择真正做得到的安排，就很好。</p></div>
+              <div class="two-col"><label class="field">每周可以练几天<select name="days"><option value="2">2 天</option><option value="3" selected>3 天</option><option value="4">4 天</option><option value="5">5 天</option></select></label><label class="field">每次可以留多久<select name="minutes"><option value="20">20 分钟</option><option value="30" selected>30 分钟</option><option value="45">45 分钟</option><option value="60">60 分钟</option></select></label></div>
+              <label class="field spaced-field">你在哪里训练<select name="equipment"><option value="bodyweight">徒手，不使用器械</option><option value="dumbbells">在家，有哑铃</option><option value="gym">健身房</option></select></label>
+              <details class="subtle-details extra-details"><summary>还有想让 AI 知道的吗？ <span class="optional">选填</span></summary><div class="detail-body"><label class="field">动作偏好、身体限制或其他目标<textarea name="notes" rows="3" maxlength="500" placeholder="比如：偏好低冲击运动，希望先学会基础动作……"></textarea></label><p class="helper notes-count" id="notes-count">0 / 500</p></div></details>
+              <div id="setup-summary" class="setup-summary" aria-label="你的训练安排"><p>即将生成的安排</p><strong id="setup-summary-text"></strong><p class="helper">先根据这些安排生成一周计划，练后再用反馈调整。</p></div>
+              <p class="helper privacy-note">资料与记录保存在本机。生成时会联网发送给 AI，并使用你已登录的 Codex 额度。</p>
+            </div>
+          </fieldset>
+          <div id="form-error" class="error-message" role="alert" hidden></div>
+          <div id="generation-progress" class="progress-card" role="status" hidden><span class="spinner" aria-hidden="true"></span><div><strong>正在为你安排这一周</strong><p>可能需要 1–4 分钟。<span id="generation-elapsed"></span></p></div><button type="button" class="text-button" data-action="cancel-request">取消</button></div>
+          <p id="setup-next-hint" class="step-next-hint"></p>
+          <div class="form-actions"><button type="button" id="setup-back" class="secondary" data-action="setup-back">上一步</button><button type="submit" id="setup-next" class="primary">下一步 <span aria-hidden="true">→</span></button></div>
+          <p id="setup-generation-note" class="helper centered" hidden>AI 生成可能需要 1–4 分钟，请保持页面打开。</p>
+        </form>
+        <p class="setup-mode-switch">想先体验一下？<button type="button" class="text-button" data-action="open-presets">试试预设计划 · 无需 AI →</button></p>
+        </div></div>
+      </section>
+      <section id="page-training" class="page content-page" hidden></section>
+      <section id="page-session" class="page content-page" hidden></section>
+      <section id="page-library" class="page content-page library-page" hidden></section>
+      <section id="page-presets" class="page content-page presets-page" hidden></section>
+      <section id="page-records" class="page content-page" hidden></section>
+      <section id="page-me" class="page content-page" hidden></section>
+    </main>
+    <footer class="site-footer"><span>按你的节奏，慢慢变强。</span><span>一般健身建议，不替代医学诊断。</span></footer>
+  </div>
+  <dialog id="feedback-dialog" aria-labelledby="feedback-title"><div class="dialog-shell"><div class="dialog-top"><span class="dialog-brand">训练反馈</span><button type="button" class="icon-button" data-action="close-dialog" aria-label="关闭反馈面板">×</button></div><div id="feedback-body"></div></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

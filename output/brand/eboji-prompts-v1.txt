@@ -1,0 +1,30 @@
+eboji logo — concept v1
+Generation mode: built-in image_gen tool
+Primary asset: eboji-logo-v1.png (transparent PNG)
+Standalone symbol: eboji-mark-v1.png (transparent PNG)
+These files are raster concept assets, not SVG vector masters.
+
+PRIMARY GENERATION PROMPT
+Use case: logo-brand
+Asset type: Primary horizontal logo for the eboji website and fitness app.
+Primary request: Create an original, beautifully resolved logo for "eboji", an interactive digital fitness coach that makes lean-muscle training easy. The "e" means electronic and sounds like the Chinese word for easy. Convey approachable, light, quietly strong, intelligent.
+Design: A standalone distinctive lowercase e monogram paired with the exact lowercase wordmark "eboji". Build the monogram from one simple, confident flowing shape: an open rounded e with a subtle upward energy; its upper curved silhouette should very subtly suggest a lean flexed arm or the tension of a training band, while remaining clearly a letter e. Keep this subtle and abstract, no anatomical illustration. Strong silhouette, generous negative space, smooth rounded terminals, restrained medium stroke weight, readable at favicon size. The wordmark is a custom-looking rounded geometric sans-serif, medium weight, thoughtfully kerned, friendly and refined; keep b, o, j, i distinctly readable. A quiet curve in the e may echo the monogram.
+Composition: One horizontal lockup, monogram on the left and eboji wordmark on the right, balanced optically, with generous clear space around all edges. Logo occupies about 78 percent of canvas width. Landscape canvas around 3:1.
+Color palette: Match the user's existing website: monogram warm orange #e95732, wordmark deep charcoal #252923. Flat solid colors only.
+Text (verbatim): "eboji", spelled e-b-o-j-i, all lowercase. This is the only text.
+Background: Genuine transparent alpha, with no background fill.
+Style: Premium contemporary digital-wellness brand, clean vector-like edges, flat 2D identity design.
+Constraints: Deliver just one finished logo asset, not a presentation board or mockup. No slogans, no Chinese text, no extra punctuation, no weights or dumbbells, no bulky bodybuilder, no robot, no sparks, no gradients, no 3D, no shadows, no texture, no border, no watermark. Do not reproduce any existing brand logo.
+
+REFINEMENT PROMPT
+Use case: logo-brand
+Input image 1: edit target, an original eboji logo.
+Refine ONLY rendering cleanliness of this logo. Preserve its exact design, silhouette, lowercase text "eboji", letter shapes, kerning, warm orange monogram, charcoal wordmark, spacing, horizontal layout and transparent background.
+Remove ALL stray orange pixels and flecks in the transparent negative spaces, ALL speckling around contours, ALL rough or mottled edges, and ALL interior texture/gradients. Every component must have a completely smooth, crisp, clean vector-like contour, with normal high-quality antialiasing. Every orange shape is a uniform solid #e95732. Every charcoal shape is uniform solid #252923. All empty spaces are genuinely fully transparent including the counters and spaces inside the orange symbol. No red, yellow or green fringes. No new elements.
+Deliver the same one horizontal logo lockup, no mockup, no labels.
+
+STANDALONE SYMBOL PROMPT
+Use case: logo-brand
+Asset type: Standalone eboji symbol for an app icon and website favicon, square canvas.
+Input image 1: reference for the established eboji monogram shape and color.
+Create a standalone version of ONLY the orange stylized e symbol from the reference. Preserve its distinctive open loop silhouette, rounded terminals, rising inner curve, proportions and warm orange color #e95732. Remove all wordmark text. Place the orange e symbol at the optical center of a square transparent canvas, sized to occupy about 68 percent of the width and height, with balanced safe margins for an app icon. Use clean flat uniform color with polished smooth vector-like outlines. Completely clear negative spaces, no flecks, no texture, no shadows, no gradients, no outline. Background genuinely transparent alpha. One symbol only. No other text or decoration.

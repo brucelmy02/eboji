@@ -1,0 +1,810 @@
+{
+  "generatedAt": "2026-10-23T14:19:25.183Z",
+  "sourceHashes": {
+    "exercise-renderer-3d.js": "495a9af27d9a4650f6a75ab4b7e281f044e2a99c0c359504f2f0d364a38f83f6",
+    "exercise-poses-3d.js": "6081cc4358068063ab3f49a93da21eaf558fe253fab0d0a6f5147a514696ef5f",
+    "exercise-poses.js": "a62a77f8b3017e097773799ec0691a8f294f4d2106202b2fac4db9f2dcd61be2"
+  },
+  "posters": [
+    {
+      "id": "bodyweight-squat",
+      "phase": 1,
+      "phaseLabel": "屈髋屈膝，下蹲",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7352,
+      "sha256": "f4112b297ffa7af5d94d7489a0fdf9a200f3b1f5e79b10a239bdff9f382ed4b5"
+    },
+    {
+      "id": "sumo-squat",
+      "phase": 1,
+      "phaseLabel": "膝盖沿脚尖方向下蹲",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7538,
+      "sha256": "5d948bd641ce7460b9bdedfb820f744985f979c394fd93f0b26ec0ccbaa6af54"
+    },
+    {
+      "id": "split-squat",
+      "phase": 1,
+      "phaseLabel": "身体垂直下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7170,
+      "sha256": "67de8066eadccfa535353b92f3506e17843f72132ee7307f52a25dc8ba6b69e8"
+    },
+    {
+      "id": "reverse-lunge",
+      "phase": 1,
+      "phaseLabel": "向后迈步并下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6688,
+      "sha256": "b669d2ec50bfbe4e860a09664cd9410c77ea37cceb4f29e2a60599fec03e3d4e"
+    },
+    {
+      "id": "forward-lunge",
+      "phase": 1,
+      "phaseLabel": "向前迈步并下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6760,
+      "sha256": "e79d2ac10937aa841bf5ac52f9294553dab95a365418ea3d8a8a8164b065ecd3"
+    },
+    {
+      "id": "lateral-lunge",
+      "phase": 1,
+      "phaseLabel": "向一侧屈髋，另一腿伸直",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7184,
+      "sha256": "6fd61cc9296519b76c9ca40b6419a8a5adfb3a261d147ae3ba4ae02700cbe6c2"
+    },
+    {
+      "id": "calf-raise",
+      "phase": 1,
+      "phaseLabel": "双脚提踵",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7498,
+      "sha256": "9bdcfe45c6bd2a0080a12daba3fb3f867266f7f94771d118a6487c7f86c99a04"
+    },
+    {
+      "id": "single-leg-calf-raise",
+      "phase": 1,
+      "phaseLabel": "支撑脚提踵",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7348,
+      "sha256": "55b90e4ad91e1145ebbebacca2d98b2c40054809a341731d9241fc95ae81690c"
+    },
+    {
+      "id": "goblet-squat",
+      "phase": 1,
+      "phaseLabel": "抱铃下蹲",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7836,
+      "sha256": "aa6933751b690f948ae6fad9fc25849182ac3e50ed28e866390948509cf8a798"
+    },
+    {
+      "id": "dumbbell-squat",
+      "phase": 1,
+      "phaseLabel": "持铃于身体两侧下蹲",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7836,
+      "sha256": "f1647ac78658882865362269900a583e4c36af6f065020bf4bccf0565f2e6628"
+    },
+    {
+      "id": "dumbbell-sumo-squat",
+      "phase": 1,
+      "phaseLabel": "哑铃沿身体中线下降",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7802,
+      "sha256": "c804bd365425545e98cf6f1a36fd974d9c334b898c7c9dd6bdd06f1f3d105dde"
+    },
+    {
+      "id": "dumbbell-split-squat",
+      "phase": 1,
+      "phaseLabel": "屈膝垂直下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7374,
+      "sha256": "1941dd3facf27eb167dd651a18e02728ae6e1804c493f0412b765a48ed88766a"
+    },
+    {
+      "id": "dumbbell-reverse-lunge",
+      "phase": 1,
+      "phaseLabel": "后撤一步，控制下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7010,
+      "sha256": "69b2ce267e6b10da6563873aa1817904deba442929b56eddb97d4f04379af4cb"
+    },
+    {
+      "id": "dumbbell-lateral-lunge",
+      "phase": 1,
+      "phaseLabel": "向一侧坐髋，铃随身体下移",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8016,
+      "sha256": "36155d86b0f0037faeeb6ef8fca415b3fe6f34a5ca05957d91b928c7981765d8"
+    },
+    {
+      "id": "dumbbell-calf-raise",
+      "phase": 1,
+      "phaseLabel": "提起脚跟，保持平衡",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8090,
+      "sha256": "be83fb7eae72f7db6cba3b6c97881246ba983381c35fef0ff3f9dc60072477ca"
+    },
+    {
+      "id": "glute-bridge",
+      "phase": 1,
+      "phaseLabel": "抬髋至肩髋膝大致成线",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9426,
+      "sha256": "c312589a60180d1ac745de75c1f97bfbba948e527380186c2dbc8bbbc9ccc5e8"
+    },
+    {
+      "id": "single-leg-glute-bridge",
+      "phase": 1,
+      "phaseLabel": "支撑脚发力抬髋",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8532,
+      "sha256": "f205f84a53096d4bad1d49d650a343732b0151c29b75f22a87a35cc969f52d71"
+    },
+    {
+      "id": "frog-pump",
+      "phase": 1,
+      "phaseLabel": "脚跟相贴，轻抬髋",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9106,
+      "sha256": "d77d6ff62416a6360bf727dc5c493d819162d458558afbb3dcdd1f98689e84dc"
+    },
+    {
+      "id": "quadruped-hip-extension",
+      "phase": 1,
+      "phaseLabel": "屈膝向后抬腿",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8910,
+      "sha256": "b4ac3c080677f8d94b6dca490ef51eb2b8b46f5e46677f19554bf1781222f9a9"
+    },
+    {
+      "id": "fire-hydrant",
+      "phase": 1,
+      "phaseLabel": "保持屈膝，向外侧打开",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7804,
+      "sha256": "248987952d38d1d95dd0657b369e04b032d08c35fc0f6173143c7a06035e1227"
+    },
+    {
+      "id": "side-lying-leg-raise",
+      "phase": 1,
+      "phaseLabel": "上侧腿向上抬起",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9476,
+      "sha256": "b7b3af3c6a2252efb9497d3c9e10bea04936a88d1920e78aef33e82e1cba6a48"
+    },
+    {
+      "id": "clamshell",
+      "phase": 1,
+      "phaseLabel": "保持脚跟相贴，打开上侧膝",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 10198,
+      "sha256": "05130a3631b9364c33e047d5f13b7917a9bb6471cfb669277d6e0f54422a4780"
+    },
+    {
+      "id": "bodyweight-good-morning",
+      "phase": 1,
+      "phaseLabel": "膝微屈，臀部向后推",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7200,
+      "sha256": "aa1344c0e7bdb5f20cd42a182d1d617701d9ebbba2e64389ef3034190de6e810"
+    },
+    {
+      "id": "dumbbell-rdl",
+      "phase": 1,
+      "phaseLabel": "髋部后推，铃贴近双腿",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8028,
+      "sha256": "710f682a5d7d1c89b8b0818cc8e4b2f9b7631fe5d3692a445b7a93f35580f1a2"
+    },
+    {
+      "id": "dumbbell-deadlift",
+      "phase": 1,
+      "phaseLabel": "屈髋屈膝，哑铃降至小腿旁",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7762,
+      "sha256": "27d5027888a8ebb6be5f57a231130b41c9115951122ecb761a388cbdbd06e48a"
+    },
+    {
+      "id": "dumbbell-single-leg-rdl",
+      "phase": 1,
+      "phaseLabel": "髋后推，后腿与躯干延伸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6940,
+      "sha256": "72f7c93783718a240c90698c4adb376c457f7f0f4e2174f086336cb509679f43"
+    },
+    {
+      "id": "dumbbell-glute-bridge",
+      "phase": 1,
+      "phaseLabel": "脚跟发力抬髋",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9518,
+      "sha256": "6a5f97d47ea343db5aae52966a2fdad375d8b1d379b24595c6615c7db416d123"
+    },
+    {
+      "id": "wall-push-up",
+      "phase": 1,
+      "phaseLabel": "屈肘，胸部向墙靠近",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6904,
+      "sha256": "3af6d9ba4e4a5e99629806d27a8920463b1202ee2dc4ef1967949dd1c7ee75e5"
+    },
+    {
+      "id": "knee-push-up",
+      "phase": 1,
+      "phaseLabel": "屈肘，胸部下降",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8470,
+      "sha256": "011703c73e95233c527ebfa526b8617b2ca9f8cf4d723b89af040904572a57d3"
+    },
+    {
+      "id": "push-up",
+      "phase": 1,
+      "phaseLabel": "屈肘下降",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7630,
+      "sha256": "94c71995f1bfb7cb97bc5a083ad571b07b663693924e948211b1311a5362152a"
+    },
+    {
+      "id": "close-grip-push-up",
+      "phase": 1,
+      "phaseLabel": "手肘靠近身体下降",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8102,
+      "sha256": "5c0f31ccefc37eca23790aead290f0491213539771d11e8ac4f25c41e19268c8"
+    },
+    {
+      "id": "dumbbell-floor-press",
+      "phase": 1,
+      "phaseLabel": "将哑铃向上推起",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9016,
+      "sha256": "b73603b7ac7b85cce8b795d46b2977a54e8fdc6a51980292fced93deb8eb0b20"
+    },
+    {
+      "id": "dumbbell-floor-squeeze-press",
+      "phase": 1,
+      "phaseLabel": "保持哑铃相靠向上推",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9390,
+      "sha256": "38bbc66a91654b327d94f0e4bf6bd70648bb77580d471d44d80ed5db999e7156"
+    },
+    {
+      "id": "prone-w-raise",
+      "phase": 1,
+      "phaseLabel": "轻收肩胛，手臂离地",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8646,
+      "sha256": "dcfa3c35a45ff0dfb5e7ab2dba93e1750b45635259256c0c1184dd751cc023f5"
+    },
+    {
+      "id": "prone-y-raise",
+      "phase": 1,
+      "phaseLabel": "肩胛稳定，双臂轻抬",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8568,
+      "sha256": "367d3cb36217511f17adcbe28108e1129a117c79793aa35a673659cf9e37b971"
+    },
+    {
+      "id": "reverse-snow-angel",
+      "phase": 1,
+      "phaseLabel": "双臂沿侧面扫向肩旁",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6916,
+      "sha256": "b2ced1a8bda62ed0d976c54ab1a135b1d45a23bfbcf17879405bcbe6347ecce4"
+    },
+    {
+      "id": "prone-cobra",
+      "phase": 1,
+      "phaseLabel": "轻抬胸口，肩胛向后下收，保持呼吸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9072,
+      "sha256": "e0be7c0ec54127fd54e7905e0c8282068c10dbbbd0afadb57e9c3bfb27899e35"
+    },
+    {
+      "id": "dumbbell-bent-over-row",
+      "phase": 1,
+      "phaseLabel": "手肘向后，拉铃至髋旁",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8416,
+      "sha256": "f268ab2f083ae8e4df9a61750215cc15b016edc629e78248ea465493ef71f980"
+    },
+    {
+      "id": "dumbbell-single-arm-row",
+      "phase": 1,
+      "phaseLabel": "持铃手肘向后划",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8386,
+      "sha256": "b6f211e9891131849a9aaae92cb2c11aa0332e79a62446ee6b8af1806abf23d6"
+    },
+    {
+      "id": "pike-push-up",
+      "phase": 1,
+      "phaseLabel": "屈肘，头向双手前方靠近，保持离地",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7760,
+      "sha256": "9e05c2b4343d798aa4bb6e73f0d93627172971d389666570087b2410ac58da20"
+    },
+    {
+      "id": "dumbbell-overhead-press",
+      "phase": 1,
+      "phaseLabel": "向头顶推起",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8172,
+      "sha256": "3b299709c2a6263a02494379b8a5a0b9e1772205be25f545b75ea90ddd5ec8fd"
+    },
+    {
+      "id": "dumbbell-arnold-press",
+      "phase": 1,
+      "phaseLabel": "外旋并打开至肩侧",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7680,
+      "sha256": "20706368eb3b52554384130421f04b3e1a35e2ca41ae9ec4e44240c763d2a65f"
+    },
+    {
+      "id": "dumbbell-lateral-raise",
+      "phase": 1,
+      "phaseLabel": "手肘微屈，向两侧抬至肩高",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8056,
+      "sha256": "77ada1102835cbc9dc0a8b0aaaefc5174e13105faf351fa7b682b33b3bacef3d"
+    },
+    {
+      "id": "dumbbell-front-raise",
+      "phase": 1,
+      "phaseLabel": "手臂向前抬至肩高",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8046,
+      "sha256": "cb7fec6a6a948cb5b809a1305ff0fe779fb2721f0d29435b0c87caa4d92e2164"
+    },
+    {
+      "id": "dumbbell-reverse-fly",
+      "phase": 1,
+      "phaseLabel": "微屈肘，向两侧展开",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8466,
+      "sha256": "bf4ca479cf093e6fc565788411cfe8db819ced8e5e461e17c643d94b9b239d30"
+    },
+    {
+      "id": "dumbbell-biceps-curl",
+      "phase": 1,
+      "phaseLabel": "上臂稳定，弯举至肩前",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7996,
+      "sha256": "500ad14d93884c26eb399948739fdec2f064cdfcdc354878ab0ff0b8d3ddd5b2"
+    },
+    {
+      "id": "dumbbell-hammer-curl",
+      "phase": 1,
+      "phaseLabel": "保持中立握法弯举",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7806,
+      "sha256": "f923b25ac99517943e13aad6304382fb1aeeb112e33cd7bafb6c4475b510c19a"
+    },
+    {
+      "id": "dumbbell-alternating-curl",
+      "phase": 1,
+      "phaseLabel": "一侧弯举，上臂稳定",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7636,
+      "sha256": "a08d913fd4d4778364365b15d28d33666a251076a58b0452a86cddbf23ed204f"
+    },
+    {
+      "id": "dumbbell-cross-body-hammer-curl",
+      "phase": 1,
+      "phaseLabel": "一只铃斜向对侧胸前",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7974,
+      "sha256": "b82ed0ef0284c0093f99b3b95f1f7492b5cf5b0b9a5d4f6f3049e16a0ebd8765"
+    },
+    {
+      "id": "dumbbell-overhead-triceps-extension",
+      "phase": 1,
+      "phaseLabel": "上臂稳定，伸肘举铃",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7150,
+      "sha256": "ae249ea0251339b2944846943500c884a5a20495bc9ad441cfb3f4d45295faf9"
+    },
+    {
+      "id": "dumbbell-triceps-kickback",
+      "phase": 1,
+      "phaseLabel": "保持上臂，向后伸直手肘",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8382,
+      "sha256": "4b53dc44a8b5fd6766ecdd87b5407d952799f45fda59ab492eac4c5a65ab4bef"
+    },
+    {
+      "id": "dumbbell-floor-triceps-extension",
+      "phase": 1,
+      "phaseLabel": "上臂固定，屈肘向头旁下放",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9534,
+      "sha256": "76d5e6102056b6909320da86295eac95bd9cb73679f45ac0dcd7d8de4b5118a4"
+    },
+    {
+      "id": "forearm-plank",
+      "phase": 1,
+      "phaseLabel": "前臂支撑，头髋脚跟成线，保持呼吸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8106,
+      "sha256": "4ed754d58407fba191af4f646fdd80d46dff3726bc33eb7a918283ed59a4bf88"
+    },
+    {
+      "id": "high-plank",
+      "phase": 1,
+      "phaseLabel": "双手在肩下，身体成线，保持呼吸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7204,
+      "sha256": "f352d6ba53d6beaf373d049a3611b39fde87911dc128616d86f3ee7a66b02fc3"
+    },
+    {
+      "id": "knee-plank",
+      "phase": 1,
+      "phaseLabel": "膝盖着地，肩髋膝成线，保持呼吸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8590,
+      "sha256": "ddd97353c5b4f8f3f45a84cc569a4d419594124d345a074789c6ae46fe02ff11"
+    },
+    {
+      "id": "side-plank",
+      "phase": 1,
+      "phaseLabel": "侧向前臂支撑，髋部抬起并保持",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7000,
+      "sha256": "6823db7546b7a95e83507910ae3c1a8c1138bd07849452320d8983d4ee1e128d"
+    },
+    {
+      "id": "knee-side-plank",
+      "phase": 1,
+      "phaseLabel": "屈膝侧向支撑，抬髋保持",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7178,
+      "sha256": "d5dee4affd561b4ea6dffc9cdd6e9fe0c95a0d9caa466adf2ddfc6ffc8337512"
+    },
+    {
+      "id": "dead-bug",
+      "phase": 1,
+      "phaseLabel": "对侧手脚伸远，腰背稳定",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8662,
+      "sha256": "4f737185a91f1edd459c574c829dd9696a278128231d1ee893d09a387a0ab4a3"
+    },
+    {
+      "id": "bird-dog",
+      "phase": 1,
+      "phaseLabel": "对侧手脚伸远",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8530,
+      "sha256": "9fe88b18e24ccf930fc69624234c0654a68350085bc65ffb0d65314226d40f60"
+    },
+    {
+      "id": "heel-tap",
+      "phase": 1,
+      "phaseLabel": "一侧腿缓慢下落，脚跟轻点地",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8942,
+      "sha256": "262b922c73f1cda5890db9666711bd762fb5f02578807e516c19cd92bbf307c3"
+    },
+    {
+      "id": "reverse-crunch",
+      "phase": 1,
+      "phaseLabel": "轻卷骨盆，膝盖靠近躯干",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8796,
+      "sha256": "e8b797bdb1a05e33425ddab83f9d056b180ea31cde2cc9bad7169bb6f75e1334"
+    },
+    {
+      "id": "crunch",
+      "phase": 1,
+      "phaseLabel": "收腹抬起肩胛，下巴留空",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8276,
+      "sha256": "f80c0c9de3ee7e4c9e486ee81d52080a393d70f01fcab4e4c167c1a5aef8b602"
+    },
+    {
+      "id": "bicycle-crunch",
+      "phase": 1,
+      "phaseLabel": "换腿并轻转上身",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8116,
+      "sha256": "a8343d53242ca2892b2a1870cb13366c5510ae6cce640eb700317370cb94006f"
+    },
+    {
+      "id": "seated-russian-twist",
+      "phase": 1,
+      "phaseLabel": "躯干轻转，双手移向一侧",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 9046,
+      "sha256": "d5844e9784bd0f0b82f494d2510269953a718ff1e65e23edafa49b6d3809b4eb"
+    },
+    {
+      "id": "lying-leg-raise",
+      "phase": 1,
+      "phaseLabel": "腰背稳定，缓慢降低双腿",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8472,
+      "sha256": "c3e4122cd5a6c75ef41e1dc95b8a206fcc076655c2d829d5c8ed4e78955589e3"
+    },
+    {
+      "id": "plank-shoulder-tap",
+      "phase": 1,
+      "phaseLabel": "一手轻触对侧肩",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7018,
+      "sha256": "21f9604cffa1c112b64af00c5f6a99f59fefadeb74f2aaa325cab32740ffc9ac"
+    },
+    {
+      "id": "bear-hold",
+      "phase": 1,
+      "phaseLabel": "四点支撑，膝盖轻离地并保持",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8240,
+      "sha256": "7be00faf6e3739855633c21fc6935fbfadacca8550b9ff22c38b59132c2678d7"
+    },
+    {
+      "id": "dumbbell-suitcase-march",
+      "phase": 1,
+      "phaseLabel": "一侧提膝，躯干不侧倾",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7318,
+      "sha256": "6f1e35c092bcb2af1d6dd3be47ec86d7fadd70301ab0417ba029b8979924ad50"
+    },
+    {
+      "id": "march-in-place",
+      "phase": 1,
+      "phaseLabel": "抬起一侧膝盖并摆臂",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6976,
+      "sha256": "af9a9d1e4a6815d0f5c34ee1cea4e66954e1c03153da7e614e1214443d767dd6"
+    },
+    {
+      "id": "step-jack",
+      "phase": 1,
+      "phaseLabel": "一脚向侧迈，双臂上举",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7420,
+      "sha256": "747118d72ac59637c7c75ce8494dbdf9ed47f61161aaded8c5d1ac09b68b027d"
+    },
+    {
+      "id": "jumping-jack",
+      "phase": 1,
+      "phaseLabel": "轻跳开腿，同时举臂",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6936,
+      "sha256": "2de3c938ef9847fb96a81f27972cbd764055b3821ffde4be195f24ba65610dab"
+    },
+    {
+      "id": "high-knees",
+      "phase": 1,
+      "phaseLabel": "快速换脚，另一侧提膝",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6482,
+      "sha256": "e4dc0e72b1c02e4a134d3c58734e89cfe4401035c740f18c06824612f4e67fec"
+    },
+    {
+      "id": "mountain-climber",
+      "phase": 1,
+      "phaseLabel": "一侧膝盖向前收",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7036,
+      "sha256": "116c1d4d320707a9a33eb8d35fb815fa26eb6e442004fc9f5f8ec90c5c80f662"
+    },
+    {
+      "id": "standing-knee-to-elbow",
+      "phase": 1,
+      "phaseLabel": "一膝抬起，对侧肘靠近",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7578,
+      "sha256": "ce21de9b43e3653d8a4ae050140309c7376e99041a9534b62937c85f6b82b4a1"
+    },
+    {
+      "id": "cat-cow",
+      "phase": 1,
+      "phaseLabel": "吸气，胸部展开，背部轻下沉",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8322,
+      "sha256": "77d9da1c676736e4d747ea7237adc3232ec3981c8f1a74711adba59312bee041"
+    },
+    {
+      "id": "child-pose",
+      "phase": 1,
+      "phaseLabel": "臀部向脚跟坐，手臂前伸，轻松呼吸",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 6666,
+      "sha256": "c872d3537ba4b43252897d8ceeead97c35cc8dca512e1a28ed4a1a9a6d6a6993"
+    },
+    {
+      "id": "thoracic-rotation",
+      "phase": 1,
+      "phaseLabel": "胸椎轻转，手肘朝侧上方打开",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7026,
+      "sha256": "c0240892a9d89b8690fa0152dce1b7b442554848f618d0dbb502bc44081e6e69"
+    },
+    {
+      "id": "half-kneeling-hip-flexor-stretch",
+      "phase": 1,
+      "phaseLabel": "半跪，收紧后侧臀部，髋部轻向前",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8618,
+      "sha256": "c884977e9e21d53241f228035d255cac64096d5765b4fc9629f181119626a3a4"
+    },
+    {
+      "id": "standing-calf-stretch",
+      "phase": 1,
+      "phaseLabel": "双手扶墙，后膝伸直，后脚跟踩地",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 7742,
+      "sha256": "2a3d024e2c96f6a1503f59a8a7c0f290bbf7fa0f9232784f30e38c2ec0e98878"
+    },
+    {
+      "id": "supine-hamstring-stretch",
+      "phase": 1,
+      "phaseLabel": "仰卧，一腿伸直抬起，双手扶住大腿后侧",
+      "view": "three-quarter",
+      "width": 720,
+      "height": 560,
+      "bytes": 8732,
+      "sha256": "0471309b9999efbe3051f7d921c753dc86c79864e9f8da69c838dc6d61d751d8"
+    }
+  ]
+}

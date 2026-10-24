@@ -1,0 +1,17 @@
+{
+  "name": "eboji",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "电子薄肌：本机 Codex 驱动的训练计划、反馈与调整体验",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --watch server.mjs",
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "posters:generate": "node scripts/generate-exercise-posters.mjs",
+    "check": "node --check server.mjs && node --check lib/plan.mjs && node --check lib/codex.mjs && node --check lib/feedback.mjs && node --check lib/store.mjs && node --check lib/exercise-catalog.mjs && node --check lib/presets.mjs && node --check public/app.js && node --check public/motion.js && node --check public/exercise-library.js && node --check public/exercise-catalog.js && node --check public/exercise-poses.js && node --check public/exercise-animation.js && node --check public/preset-plans.js && node --check public/exercise-poses-3d.js && node --check public/exercise-renderer-3d.js && node --check public/workout-deck.js && node --check public/workout-progress.js && node --check public/exercise-poster.js && node --check scripts/generate-exercise-posters.mjs && node --check scripts/poster-export.js && node --check public/workout-activity.js && node --check public/training-calendar-data.js && node --check public/training-calendar.js"
+  }
+}
